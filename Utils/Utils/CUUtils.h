@@ -67,6 +67,7 @@ typedef void(^SetBlock)(NSSet *set);
 typedef void(^IntegerBlock)(NSInteger num);
 typedef void(^BoolBlock)(BOOL val);
 typedef void(^ErrorBlock)(NSError *error);
+typedef void(^DataBlock)(NSData *data);
 
 #pragma mark - Вспомогательные функции
 

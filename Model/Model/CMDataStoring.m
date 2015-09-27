@@ -27,7 +27,7 @@
 
 - (NSArray *)modelUsersFromCoreDataUsers:(NSArray *)users {
     NSArray *result = [users bk_map:^id(User *user) {
-        CMUserBuilder *builder. = [CMUserBuilder new];
+        CMUserBuilder *builder = [CMUserBuilder new];
         builder.login = user.login;
         builder.id = user.id;
         builder.avatarUrl = user.avatarUrl;
@@ -49,6 +49,8 @@
         CMUser *cmUser = [[CMUser alloc] initWithBuilder:builder];
         return cmUser;
     }];
+    
+    return result;
 }
 
 @end
