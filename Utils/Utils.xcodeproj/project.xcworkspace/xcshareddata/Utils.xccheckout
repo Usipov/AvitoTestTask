@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8E594A73-2663-4DBD-9E27-B52EF24197ED</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Utils</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>61EAD97AAFACB06F4514A3B6E77C3A9CD49668D0</key>
+		<string>https://github.com/CT-Consulting/The-New-CT-Mobile.git</string>
+		<key>E294EAAF9530814C55A324E561FB4F88051A6A76</key>
+		<string>https://github.com/Usipov/AvitoTestTask.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Utils/Utils.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>61EAD97AAFACB06F4514A3B6E77C3A9CD49668D0</key>
+		<string>../../../../The-New-CT-Mobile</string>
+		<key>E294EAAF9530814C55A324E561FB4F88051A6A76</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Usipov/AvitoTestTask.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E294EAAF9530814C55A324E561FB4F88051A6A76</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E294EAAF9530814C55A324E561FB4F88051A6A76</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AvitoTestTask</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>61EAD97AAFACB06F4514A3B6E77C3A9CD49668D0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>The-New-CT-Mobile</string>
+		</dict>
+	</array>
+</dict>
+</plist>

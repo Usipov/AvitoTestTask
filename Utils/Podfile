@@ -1,0 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
+
+pod 'BlocksKit', :inhibit_warnings => true
+pod 'Reachability', :inhibit_warnings => true
