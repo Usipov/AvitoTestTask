@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
     coreData.prefix_header_file = 'CoreData/CoreData/CoreData-Prefix.pch'
     coreData.resources    = 'CoreData/CoreData/**/*.{bundle,plist}'    
 
-    coreData.dependency 'Avito/Utils'
+    coreData.dependency 'AvitoTestTask/Utils'
     coreData.dependency 'MagicalRecord', '2.2'
 
     coreData.frameworks = 'CoreData'
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
     model.prefix_header_file = 'Model/Model/Model-Prefix.pch'
     model.resources    = 'Model/Model/**/*.{bundle,plist}'
 
-    model.dependency 'Avito/CoreData'    
+    model.dependency 'AvitoTestTask/CoreData'    
   end
 
   s.subspec 'Networking' do |networking|
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
     networking.prefix_header_file = 'Networking/Networking/Networking-Prefix.pch'
     networking.resources    = 'Networking/Networking/**/*.{bundle,plist}'
 
-    networking.dependency 'Avito/Utils'
+    networking.dependency 'AvitoTestTask/Utils'
     networking.dependency 'AFNetworking'
   end
 
@@ -50,7 +50,7 @@ Pod::Spec.new do |s|
     images.prefix_header_file = 'AsyncImages/AsyncImages/AsyncImages-Prefix.pch'
     images.resources    = 'AsyncImages/AsyncImages/**/*.{bundle,plist}'
 
-    images.dependency 'Avito/Networking'
+    images.dependency 'AvitoTestTask/Networking'
   end
 
   s.subspec 'Interactor' do |interactor|
@@ -58,8 +58,8 @@ Pod::Spec.new do |s|
     interactor.source_files = 'Interactor/Interactor/**/*.{h,m,mm}'
     interactor.resources    = 'Interactor/Interactor/**/*.{bundle,plist}'    
 
-    interactor.dependency 'Avito/Model'
-    interactor.dependency 'Avito/AsyncImages'
+    interactor.dependency 'AvitoTestTask/Model'
+    interactor.dependency 'AvitoTestTask/AsyncImages'
   end
 
   s.subspec 'View' do |view|
@@ -75,8 +75,8 @@ Pod::Spec.new do |s|
     presenter.source_files = 'Presenter/Presenter/**/*.{h,m,mm}'
     presenter.resources    = 'Presenter/Presenter/**/*.{bundle,plist}'
 
-    presenter.dependency 'Avito/Interactor'
-    presenter.dependency 'Avito/View'    
+    presenter.dependency 'AvitoTestTask/Interactor'
+    presenter.dependency 'AvitoTestTask/View'    
   end
 
 end

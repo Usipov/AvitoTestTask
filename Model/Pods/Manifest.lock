@@ -1,0 +1,42 @@
+PODS:
+  - AvitoTestTask/CoreData (0.0.0):
+    - AvitoTestTask/Utils
+    - MagicalRecord (= 2.2)
+  - AvitoTestTask/Utils (0.0.0):
+    - BlocksKit
+    - Reachability
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core (= 2.2)
+  - MagicalRecord/Core (2.2)
+  - Reachability (3.2)
+
+DEPENDENCIES:
+  - AvitoTestTask/CoreData (from `..`)
+  - AvitoTestTask/Utils (from `..`)
+
+EXTERNAL SOURCES:
+  AvitoTestTask:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  AvitoTestTask: b049a2108a64971da93f9c1480175b3994cae526
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+
+COCOAPODS: 0.38.2
