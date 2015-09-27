@@ -108,6 +108,7 @@ BOOL isRetina();
 
 #import <BlocksKit/BlocksKit.h>
 #import <BlocksKit/BlocksKit+UIKit.h>
+#import <Reachability/Reachability.h>
 
 #import "NSMutableArray+CUUtils.h"
 #import "NSMutableString+CUUtils.h"

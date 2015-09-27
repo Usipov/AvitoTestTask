@@ -1,0 +1,122 @@
+{
+  "name": "AvitoTestTask",
+  "version": "0.0.0",
+  "summary": "Avito-Test-Task-by-Timur-Yusipov",
+  "homepage": "https://github.com/Usipov/AvitoTestTask",
+  "license": "MIT",
+  "authors": {
+    "fizmatchel": "ykylele@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Usipov/AvitoTestTask.git",
+    "branch": "master"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "subspecs": [
+    {
+      "name": "Utils",
+      "source_files": "Utils/Utils/*.{h,m,mm}",
+      "dependencies": {
+        "BlocksKit": [
+
+        ],
+        "Reachability": [
+
+        ]
+      }
+    },
+    {
+      "name": "CoreData",
+      "source_files": "CoreData/CoreData/**/*.{h,m,mm}",
+      "prefix_header_file": "CoreData/CoreData/CoreData-Prefix.pch",
+      "resources": "CoreData/CoreData/**/*.{bundle,plist}",
+      "dependencies": {
+        "Avito/Utils": [
+
+        ],
+        "MagicalRecord": [
+          "2.2"
+        ]
+      },
+      "frameworks": "CoreData"
+    },
+    {
+      "name": "Model",
+      "source_files": "Model/Model/**/*.{h,m,mm}",
+      "prefix_header_file": "Model/Model/Model-Prefix.pch",
+      "resources": "Model/Model/**/*.{bundle,plist}",
+      "dependencies": {
+        "Avito/CoreData": [
+
+        ]
+      }
+    },
+    {
+      "name": "Networking",
+      "source_files": "Networking/Networking/**/*.{h,m,mm}",
+      "prefix_header_file": "Networking/Networking/Networking-Prefix.pch",
+      "resources": "Networking/Networking/**/*.{bundle,plist}",
+      "dependencies": {
+        "Avito/Utils": [
+
+        ],
+        "AFNetworking": [
+
+        ]
+      }
+    },
+    {
+      "name": "AsyncImages",
+      "source_files": "AsyncImages/AsyncImages/**/*.{h,m,mm}",
+      "prefix_header_file": "AsyncImages/AsyncImages/AsyncImages-Prefix.pch",
+      "resources": "AsyncImages/AsyncImages/**/*.{bundle,plist}",
+      "dependencies": {
+        "Avito/Networking": [
+
+        ]
+      }
+    },
+    {
+      "name": "Interactor",
+      "prefix_header_file": "Interactor/Interactor/Interactor-Prefix.pch",
+      "source_files": "Interactor/Interactor/**/*.{h,m,mm}",
+      "resources": "Interactor/Interactor/**/*.{bundle,plist}",
+      "dependencies": {
+        "Avito/Model": [
+
+        ],
+        "Avito/AsyncImages": [
+
+        ]
+      }
+    },
+    {
+      "name": "View",
+      "prefix_header_file": "View/View/View-Prefix.pch",
+      "source_files": "View/View/**/*.{h,m,mm}",
+      "resources": "View/View/**/*.{storyboard,png,xib,bundle,plist}",
+      "dependencies": {
+        "Masonry": [
+
+        ]
+      }
+    },
+    {
+      "name": "Presenter",
+      "prefix_header_file": "Presenter/Presenter/Presenter-Prefix.pch",
+      "source_files": "Presenter/Presenter/**/*.{h,m,mm}",
+      "resources": "Presenter/Presenter/**/*.{bundle,plist}",
+      "dependencies": {
+        "Avito/Interactor": [
+
+        ],
+        "Avito/View": [
+
+        ]
+      }
+    }
+  ]
+}
