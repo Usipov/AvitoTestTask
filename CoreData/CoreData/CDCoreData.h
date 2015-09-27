@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 #import "CUUtils.h"
 #import "CDCoreDataManager.h"

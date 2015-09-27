@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface CDCoreDataManager : NSObject
 
@@ -16,5 +17,9 @@
                        sortedBy:(NSString *)sortAttribute
                       ascending:(BOOL)ascending
                      completion:(ArrayBlock)block;
+
+- (void)saveCoreData;
+
+- (User *)newUser;
 
 @end

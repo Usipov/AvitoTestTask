@@ -72,6 +72,7 @@
 - (void)clearCoreData {
     NSFileManager *manager = [NSFileManager new];
     [manager removeItemAtURL:[self modelURL] error:nil];
+    [MagicalRecord cleanUp];
     [self setupCoreDataStackWithModel:[NSManagedObjectModel MR_defaultManagedObjectModel]];
 }
 
@@ -88,6 +89,15 @@
             block(result);
         });
     });
+}
+
+- (void)saveCoreData {
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
+}
+
+- (User *)newUser {
+    User *result = [User MR_createEntity];
+    return result;
 }
 
 @end

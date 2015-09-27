@@ -17,12 +17,14 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - MagicalRecord (2.3.0)
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core (= 2.2)
+  - MagicalRecord/Core (2.2)
   - Reachability (3.2)
 
 DEPENDENCIES:
   - AvitoTestTask/Utils (from `..`)
-  - MagicalRecord
+  - MagicalRecord (= 2.2)
 
 EXTERNAL SOURCES:
   AvitoTestTask:
@@ -31,7 +33,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AvitoTestTask: 4c9eb121e5ef0e68463baf2aa097afb44818c016
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
+  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
 COCOAPODS: 0.38.2
