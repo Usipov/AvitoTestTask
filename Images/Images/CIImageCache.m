@@ -43,7 +43,7 @@
 }
 
 - (void)imageForRequest:(CIImageRequest *)request completion:(IdBlock)block {
-    if (! request.pathToStoreImage)
+    if (! request)
         return;
     if (! block)
         return;
@@ -67,6 +67,10 @@
     }
     
     block(cachedImage);
+}
+
+- (void)cancelGettingImageForRequest:(CIImageRequest *)request {
+    [self.operationQueues cancelOperationForRequest:request];
 }
 
 - (UIImage *)cacheObject:(id)object forRequest:(CIImageRequest *)request {

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CVInterfaceItem.h"
 
 @protocol CVInterfaceEventsProtocol <NSObject>
 
@@ -15,5 +16,9 @@
 - (void)didRequestTrashingThumbs;
 
 - (void)didRequestTrashingStore;
+
+- (void)willDisplayInterfaceItem:(CVInterfaceItem *)item;
+
+- (void)didDisplayInterfaceItem:(CVInterfaceItem *)item;
 
 @end

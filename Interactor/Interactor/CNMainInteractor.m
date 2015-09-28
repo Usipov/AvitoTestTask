@@ -81,12 +81,26 @@
 }
 
 - (void)findImageForPresenterMatchingDataItem:(CNDataItem *)item {
+    if (! item)
+        return;
+    if (item.image)
+        return;
+    
     WSELF;
-    CIImageRequest *request = [[CIImageRequest alloc] initWithId:item.id url:item.avatarUrl];
+    CIImageRequest *request = [self imageRequestForDataItem:item];
+    
     [self.imageCache imageForRequest:request completion:^(id obj) {
         item.image = obj;
         [wself.outputReciever foundImageForPresenterMatchingDataItem:item];
     }];
+}
+
+- (void)stopFindingImageForPresenterMatchingDataItem:(CNDataItem *)item {
+    if (! item)
+        return;
+    
+    CIImageRequest *request = [self imageRequestForDataItem:item];
+    [self.imageCache cancelGettingImageForRequest:request];
 }
 
 - (void)clearStorage {
@@ -100,6 +114,13 @@
 
 - (void)stopFindingImages {
     [self.imageCache cancelAllOperations];
+}
+
+#pragma mark - privates
+
+- (CIImageRequest *)imageRequestForDataItem:(CNDataItem *)dataItem {
+    CIImageRequest *request = [[CIImageRequest alloc] initWithId:dataItem.id url:dataItem.avatarUrl];
+    return request;
 }
 
 @end

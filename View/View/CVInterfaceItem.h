@@ -11,8 +11,9 @@
 @interface CVInterfaceItem : NSObject
 
 @property (nonatomic, strong, readonly) NSString *login;
+@property (nonatomic, strong, readonly) NSNumber *id;
 @property (strong, nonatomic) UIImage *image;
 
-- (instancetype)initWithLogin:(NSString *)login;
+- (instancetype)initWithId:(NSNumber *)id login:(NSString *)login;
 
 @end

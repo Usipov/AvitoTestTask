@@ -10,15 +10,20 @@
 
 @interface CVInterfaceItem ()
 @property (nonatomic, strong) NSString *login;
+@property (nonatomic, strong) NSNumber *id;
 @end
 
 #pragma mark -
 
 @implementation CVInterfaceItem
 
-- (instancetype)initWithLogin:(NSString *)login {
+- (instancetype)initWithId:(NSNumber *)id login:(NSString *)login {
+    if (! id)
+        return nil;
+    
     self = [super init];
     if (self) {
+        self.id = id;
         self.login = login ? : @"";
     }
     return self;

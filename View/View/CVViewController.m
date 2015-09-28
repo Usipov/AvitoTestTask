@@ -10,6 +10,7 @@
 #import "CVEmptyView.h"
 #import "CVNoInternetConnectionView.h"
 #import "CVLoadingView.h"
+#import "CVTableViewCell.h"
 
 @interface CVViewController ()
 @property (strong, nonatomic) CVEmptyView *emptyView;
@@ -178,10 +179,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    CVTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (! cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell = [[CVTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
+
+    if (cell.indexPath) {
+        CVInterfaceItem *previousItem = [self interfaceItemAtIndex:cell.indexPath.row];
+        [self.eventsHandler didDisplayInterfaceItem:previousItem];
+    }
+    
+    cell.indexPath = indexPath;
     
     CVInterfaceItem *item = [self interfaceItemAtIndex:indexPath.row];
     cell.imageView.image = item.image;
@@ -189,6 +197,11 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    CVInterfaceItem *item = [self interfaceItemAtIndex:indexPath.row];
+    [self.eventsHandler willDisplayInterfaceItem:item];
 }
 
 @end

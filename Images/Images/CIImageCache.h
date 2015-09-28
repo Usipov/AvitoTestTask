@@ -16,6 +16,7 @@
 - (id)initWithOperationQueues:(CIOperationQueues *)operationQueues imageLocating:(CIImageLocating *)locating;
 
 - (void)imageForRequest:(CIImageRequest *)request completion:(IdBlock)block;
+- (void)cancelGettingImageForRequest:(CIImageRequest *)request;
 - (void)removeAllObjects;
 - (void)clearAllObjects;
 - (void)cancelAllOperations;

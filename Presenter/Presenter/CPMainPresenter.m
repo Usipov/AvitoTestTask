@@ -56,6 +56,19 @@
     [self.interactor clearStorage];
 }
 
+- (void)willDisplayInterfaceItem:(CVInterfaceItem *)item {
+    CNDataItem *interactorItem = [self exisingInteractorItemForInterfaceItem:item];
+    [self.interactor findImageForPresenterMatchingDataItem:interactorItem];
+}
+
+- (void)didDisplayInterfaceItem:(CVInterfaceItem *)item {
+    if (item.image)
+        return;
+    
+    CNDataItem *interactorItem = [self exisingInteractorItemForInterfaceItem:item];
+    [self.interactor stopFindingImageForPresenterMatchingDataItem:interactorItem];
+}
+
 #pragma mark - CNInteractorOutput
 
 - (void)foundItemsForPresenter:(NSArray *)items {
@@ -66,6 +79,12 @@
     } else {
         [self.interface showIsEmptyMessage];
     }
+}
+     
+- (void)foundImageForPresenterMatchingDataItem:(CNDataItem *)item {
+    CVInterfaceItem *interfaceItem = [self exisingInterfaceItemForInteractorItem:item];
+    interfaceItem.image = item.image;
+    [self.interface updateViewForInterfaceItem:interfaceItem];
 }
 
 #pragma mark - notifications
@@ -80,9 +99,31 @@
 
 - (NSArray *)interfaceItemsForInteractorItems:(NSArray *)interactorItems {
     NSArray *result = [interactorItems bk_map:^id(CNDataItem *interactorItem) {
-        CVInterfaceItem *item = [[CVInterfaceItem alloc] initWithLogin:interactorItem.login];
+        CVInterfaceItem *item = [[CVInterfaceItem alloc] initWithId:interactorItem.id login:interactorItem.login];
         return item;
     }];
+    return result;
+}
+
+- (CVInterfaceItem *)exisingInterfaceItemForInteractorItem:(CNDataItem *)item {
+    if (! item)
+        return nil;
+    
+    CVInterfaceItem *result = [self.lastInterfaceItems bk_match:^BOOL(CVInterfaceItem *interfaceItem) {
+        return [interfaceItem.id isEqualToNumber:item.id];
+    }];
+    
+    return result;
+}
+
+- (CNDataItem *)exisingInteractorItemForInterfaceItem:(CVInterfaceItem *)item {
+    if (! item)
+        return nil;
+    
+    CNDataItem *result = [self.lastInteractorItems bk_match:^BOOL(CNDataItem *interactorItem) {
+        return [interactorItem.id isEqualToNumber:item.id];
+    }];
+    
     return result;
 }
 
