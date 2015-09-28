@@ -92,4 +92,8 @@
     });
 }
 
+- (void)clearStorage {
+    [self.coreDataManager clearCoreData];
+}
+
 @end

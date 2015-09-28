@@ -78,4 +78,14 @@
     }];
 }
 
+- (void)clearStorage {
+    [self.imageCache cancelAllOperations];
+    [self.dataStoring clearStorage];
+}
+
+- (void)clearImages {
+    [self.imageCache removeAllObjects];
+    [self.imageCache cancelAllOperations];
+}
+
 @end

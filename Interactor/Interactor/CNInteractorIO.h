@@ -14,6 +14,8 @@
 @protocol CNInteractorInput <NSObject>
 - (void)findItemsForPresenter;
 - (void)findImageForPresenterMatchingDataItem:(CNDataItem *)item;
+- (void)clearStorage;
+- (void)clearImages;
 @end
 
 @protocol CNInteractorOutput <NSObject>

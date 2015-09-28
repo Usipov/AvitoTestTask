@@ -17,4 +17,6 @@
 
 - (void)createUsersOnJson:(NSArray *)json withCompletion:(ArrayBlock)block;
 
+- (void)clearStorage;
+
 @end
