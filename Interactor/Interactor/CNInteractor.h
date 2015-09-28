@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CMModel.h"
 #import "CUUtils.h"
-#import "CNNetworking.h"
-#import "CIImages.h"
 #import "CDCoreData.h"
 #import "CMModel.h"
+#import "CNNetworking.h"
+#import "CIImages.h"
 
 #import "CNDataItem.h"
