@@ -9,9 +9,18 @@
 #import "CNMainInteractor.h"
 #import "CMUser.h"
 
+@interface CNMainInteractor ()
+@property (assign, nonatomic) BOOL busyFindingItems;
+@end
+
+#pragma mark -
+
 @implementation CNMainInteractor
 
 - (void)findItemsForPresenter {
+    if (self.busyFindingItems)
+        return;
+    
     WSELF;
     [self.dataStoring fetchUsersWithCompletion:^(NSArray *modelItems) {
         [wself handleModelItems:modelItems tryLoadIfEmpty:YES];
@@ -31,6 +40,8 @@
                                     } error:^(NSError *error) {
                                         DLog(@"%@", error);
                                     }];
+    } else {
+        self.busyFindingItems = NO;
     }
 }
 
@@ -84,7 +95,10 @@
 }
 
 - (void)clearImages {
-    [self.imageCache removeAllObjects];
+    [self.imageCache clearAllObjects];
+}
+
+- (void)stopFindingImages {
     [self.imageCache cancelAllOperations];
 }
 

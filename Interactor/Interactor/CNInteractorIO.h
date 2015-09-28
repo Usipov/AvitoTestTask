@@ -16,6 +16,7 @@
 - (void)findImageForPresenterMatchingDataItem:(CNDataItem *)item;
 - (void)clearStorage;
 - (void)clearImages;
+- (void)stopFindingImages;
 @end
 
 @protocol CNInteractorOutput <NSObject>

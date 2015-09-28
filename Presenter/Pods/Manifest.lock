@@ -1,0 +1,79 @@
+PODS:
+  - AFNetworking (2.6.0):
+    - AFNetworking/NSURLConnection (= 2.6.0)
+    - AFNetworking/NSURLSession (= 2.6.0)
+    - AFNetworking/Reachability (= 2.6.0)
+    - AFNetworking/Security (= 2.6.0)
+    - AFNetworking/Serialization (= 2.6.0)
+    - AFNetworking/UIKit (= 2.6.0)
+  - AFNetworking/NSURLConnection (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.0)
+  - AFNetworking/Security (2.6.0)
+  - AFNetworking/Serialization (2.6.0)
+  - AFNetworking/UIKit (2.6.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - AvitoTestTask/CoreData (0.0.0):
+    - AvitoTestTask/Utils
+    - MagicalRecord (= 2.2)
+  - AvitoTestTask/Images (0.0.0):
+    - AvitoTestTask/Networking
+  - AvitoTestTask/Interactor (0.0.0):
+    - AvitoTestTask/Images
+    - AvitoTestTask/Model
+  - AvitoTestTask/Model (0.0.0):
+    - AvitoTestTask/CoreData
+  - AvitoTestTask/Networking (0.0.0):
+    - AFNetworking
+    - AvitoTestTask/Utils
+  - AvitoTestTask/Utils (0.0.0):
+    - BlocksKit
+    - Reachability
+  - AvitoTestTask/View (0.0.0):
+    - Masonry
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core (= 2.2)
+  - MagicalRecord/Core (2.2)
+  - Masonry (0.6.3)
+  - Reachability (3.2)
+
+DEPENDENCIES:
+  - AvitoTestTask/Interactor (from `..`)
+  - AvitoTestTask/Utils (from `..`)
+  - AvitoTestTask/View (from `..`)
+
+EXTERNAL SOURCES:
+  AvitoTestTask:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  AvitoTestTask: b032d8e21d81176d0bb903d6de41f96eada1a83f
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
+  Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+
+COCOAPODS: 0.38.2

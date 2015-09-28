@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic, readonly) NSNumber *id;
 @property (strong, nonatomic, readonly) NSString *url;
+@property (strong, nonatomic, readonly) NSString *pathToStoreImage;
 
 - (instancetype)initWithId:(NSNumber *)id url:(NSString *)url;
 

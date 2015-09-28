@@ -13,4 +13,6 @@
 @property (nonatomic, strong, readonly) NSString *login;
 @property (strong, nonatomic) UIImage *image;
 
+- (instancetype)initWithLogin:(NSString *)login;
+
 @end

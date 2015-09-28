@@ -8,23 +8,28 @@
 
 #import "CIImageCache.h"
 #import "CIOperationQueues.h"
+#import "CIImageRequest+Privates.h"
 
 @interface CIImageCache ()
 @property (strong, nonatomic) NSCache *imagesCache;
 @property (strong, nonatomic) CIOperationQueues *operationQueues;
+@property (strong, nonatomic) CIImageLocating *imageLocating;
 @end
 
 #pragma mark -
 
 @implementation CIImageCache
 
-- (instancetype)initWithOperationQueues:(CIOperationQueues *)operationQueues {
+- (instancetype)initWithOperationQueues:(CIOperationQueues *)operationQueues imageLocating:(CIImageLocating *)locating {
     if (! operationQueues)
+        return nil;
+    if (! locating)
         return nil;
     
     self = [super init];
     if (self) {
-        self.operationQueues = [CIOperationQueues new];
+        self.operationQueues = operationQueues;
+        self.imageLocating = locating;
         
         self.imagesCache = [NSCache new];
         [self.imagesCache setName: @"CIImagesCache"];
@@ -51,6 +56,10 @@
     
     WSELF;
     if (! cachedImage) {
+        
+        // добавляем еще одно свойство закрытым образом
+        [request setRootSavingImagePath:self.imageLocating.rootImageLocation];
+        
         [self.operationQueues fetchOrLoadImageForRequest:request completion:^(id obj) {
             UIImage *image = [wself cacheObject:obj forRequest:request];
             block(image);
@@ -77,6 +86,14 @@
     @synchronized(self.imagesCache) { // mutex lock
         [self.imagesCache removeAllObjects];
     }
+}
+
+- (void)clearAllObjects {
+    [self removeAllObjects];
+    [self cancelAllOperations];
+    
+    NSString *rootSavingPath = self.imageLocating.rootImageLocation;
+    [[NSFileManager new] removeItemAtPath:rootSavingPath error:nil];
 }
 
 - (void)cancelAllOperations {

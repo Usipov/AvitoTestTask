@@ -7,12 +7,12 @@
 //
 
 #import "CIImageRequest.h"
-#import "CIImageLocating.h"
 
 @interface CIImageRequest ()
 
 @property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *url;
+@property (strong, nonatomic) NSString *rootSavingImagePathPrivate;
 @property (strong, nonatomic) NSString *pathToStoreImage;
 @end
 
@@ -30,10 +30,6 @@
     if (self) {
         self.id = id;
         self.url = url;
-        
-        // вычисляем и сохраняем путь для хранения файла сразу, чтобы потом не возиться с потокобезопасностью
-        // этот путь на 99% понадобится
-        self.pathToStoreImage = [self deriveImagePath];
     }
     return self;
 }
@@ -42,19 +38,29 @@
     @throw [NSException exceptionWithName:CUUTILS_ERROR reason:CUUTILS_MESSAGE_ABSTRACT_METHOD userInfo:nil];
 }
 
-- (NSString *)deriveImagePath {
+- (NSString *)deriveImagePathForRootPath:(NSString *)rootPath {
+    NSParameterAssert(self.pathToStoreImage);
+    
+    if (! self.pathToStoreImage)
+        return nil;
     if (! self.id)
         return nil;
     if (! _pathToStoreImage)
         return _pathToStoreImage;
     
-    NSString *rootPath = [[CIImageLocating new] rootImageLocation];
     NSString *md5 = [self.id.description md5Hash];
     NSString *result = [[[rootPath stringByAppendingPathComponent:md5]
                          stringByAppendingPathComponent:self.id.description]
                         stringByAppendingPathExtension:@".png"];
     _pathToStoreImage = result;
     return result;
+}
+
+#pragma mark - properties
+
+- (void)setRootSavingImagePathPrivate:(NSString *)rootSavingImagePathPrivate {
+    _rootSavingImagePathPrivate = rootSavingImagePathPrivate;
+    self.pathToStoreImage = [self deriveImagePathForRootPath:self.rootSavingImagePathPrivate];
 }
 
 #pragma mark -

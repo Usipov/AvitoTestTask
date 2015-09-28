@@ -15,6 +15,7 @@
 		22BFED7B1BB8B8B4004E31CC /* CIFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFED7A1BB8B8B4004E31CC /* CIFetchOperation.m */; };
 		22BFED7E1BB8B8BE004E31CC /* CILoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFED7D1BB8B8BE004E31CC /* CILoadOperation.m */; };
 		22BFED821BB8BFA9004E31CC /* CIImageLocating.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFED811BB8BFA9004E31CC /* CIImageLocating.m */; };
+		22EB0A5F1BB926F000FF3AD2 /* CIImageRequest+Privates.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EB0A5E1BB926F000FF3AD2 /* CIImageRequest+Privates.m */; };
 		90CA302E747B2ACE76ED887A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9C9539E72539EF370FACA9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,8 @@
 		22BFED7D1BB8B8BE004E31CC /* CILoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CILoadOperation.m; sourceTree = "<group>"; };
 		22BFED801BB8BFA9004E31CC /* CIImageLocating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageLocating.h; sourceTree = "<group>"; };
 		22BFED811BB8BFA9004E31CC /* CIImageLocating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIImageLocating.m; sourceTree = "<group>"; };
+		22EB0A5D1BB926F000FF3AD2 /* CIImageRequest+Privates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIImageRequest+Privates.h"; sourceTree = "<group>"; };
+		22EB0A5E1BB926F000FF3AD2 /* CIImageRequest+Privates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIImageRequest+Privates.m"; sourceTree = "<group>"; };
 		98B83E3EFDE75761A6E1DA61 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AE9C9539E72539EF370FACA9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB4DACC1A558F6D6D4F0011 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				22BFED741BB8B884004E31CC /* CIOperationQueues.m */,
 				22BFED761BB8B899004E31CC /* CIImageRequest.h */,
 				22BFED771BB8B899004E31CC /* CIImageRequest.m */,
+				22EB0A5D1BB926F000FF3AD2 /* CIImageRequest+Privates.h */,
+				22EB0A5E1BB926F000FF3AD2 /* CIImageRequest+Privates.m */,
 				22BFED801BB8BFA9004E31CC /* CIImageLocating.h */,
 				22BFED811BB8BFA9004E31CC /* CIImageLocating.m */,
 				22BFED791BB8B8B4004E31CC /* CIFetchOperation.h */,
@@ -294,6 +299,7 @@
 				22BFED781BB8B899004E31CC /* CIImageRequest.m in Sources */,
 				22BFED751BB8B884004E31CC /* CIOperationQueues.m in Sources */,
 				22BFED821BB8BFA9004E31CC /* CIImageLocating.m in Sources */,
+				22EB0A5F1BB926F000FF3AD2 /* CIImageRequest+Privates.m in Sources */,
 				22BFED7E1BB8B8BE004E31CC /* CILoadOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
