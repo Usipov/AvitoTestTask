@@ -1,0 +1,37 @@
+PODS:
+  - AvitoTestTask/Utils (0.0.0):
+    - BlocksKit
+    - Reachability
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - Masonry (0.6.3)
+  - Reachability (3.2)
+
+DEPENDENCIES:
+  - AvitoTestTask/Utils (from `..`)
+  - Masonry
+
+EXTERNAL SOURCES:
+  AvitoTestTask:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  AvitoTestTask: b032d8e21d81176d0bb903d6de41f96eada1a83f
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+
+COCOAPODS: 0.38.2

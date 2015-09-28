@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "CMModel.h"
-#import <Foundation/Foundation.h>
-
-
 #import "CUUtils.h"
 #import "CNNetworking.h"
 #import "CIImages.h"

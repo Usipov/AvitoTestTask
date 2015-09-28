@@ -1,0 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
+
+pod 'AvitoTestTask/Utils', :path => '..'
+pod 'Masonry', :inhibit_warnings => true
