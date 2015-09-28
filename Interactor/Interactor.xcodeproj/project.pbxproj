@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12A75F5FA0491C5DFA3EC2D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E41A4C00C017FE9BC42D83 /* libPods.a */; };
+		22BFED901BB8CD16004E31CC /* CNInteractor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22BFED8F1BB8CD16004E31CC /* CNInteractor.h */; };
+		22BFED981BB8CD16004E31CC /* libInteractor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BFED8C1BB8CD15004E31CC /* libInteractor.a */; };
+		22BFEDAF1BB8D0DB004E31CC /* CNDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFEDAE1BB8D0DB004E31CC /* CNDataItem.m */; };
+		22BFEDB41BB8D246004E31CC /* CNMainInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFEDB31BB8D246004E31CC /* CNMainInteractor.m */; };
+		22BFEDB71BB8D413004E31CC /* CNDataItemBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFEDB61BB8D413004E31CC /* CNDataItemBuilder.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22BFED991BB8CD16004E31CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22BFED841BB8CD15004E31CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22BFED8B1BB8CD15004E31CC;
+			remoteInfo = Interactor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		22BFED8A1BB8CD15004E31CC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				22BFED901BB8CD16004E31CC /* CNInteractor.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		22BFED8C1BB8CD15004E31CC /* libInteractor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libInteractor.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		22BFED8F1BB8CD16004E31CC /* CNInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNInteractor.h; sourceTree = "<group>"; };
+		22BFED971BB8CD16004E31CC /* InteractorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteractorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22BFED9D1BB8CD16004E31CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22BFEDA71BB8CF44004E31CC /* Interactor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Interactor-Prefix.pch"; sourceTree = "<group>"; };
+		22BFEDAA1BB8D031004E31CC /* CNInteractorIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNInteractorIO.h; sourceTree = "<group>"; };
+		22BFEDAD1BB8D0DB004E31CC /* CNDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNDataItem.h; sourceTree = "<group>"; };
+		22BFEDAE1BB8D0DB004E31CC /* CNDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNDataItem.m; sourceTree = "<group>"; };
+		22BFEDB21BB8D246004E31CC /* CNMainInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNMainInteractor.h; sourceTree = "<group>"; };
+		22BFEDB31BB8D246004E31CC /* CNMainInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNMainInteractor.m; sourceTree = "<group>"; };
+		22BFEDB51BB8D413004E31CC /* CNDataItemBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNDataItemBuilder.h; sourceTree = "<group>"; };
+		22BFEDB61BB8D413004E31CC /* CNDataItemBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNDataItemBuilder.m; sourceTree = "<group>"; };
+		85F3C1F5DF8EFED993783CB8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DE981E60F913C97C1DD668EC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E1E41A4C00C017FE9BC42D83 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22BFED891BB8CD15004E31CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12A75F5FA0491C5DFA3EC2D6 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22BFED941BB8CD16004E31CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22BFED981BB8CD16004E31CC /* libInteractor.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22BFED831BB8CD15004E31CC = {
+			isa = PBXGroup;
+			children = (
+				22BFED8E1BB8CD15004E31CC /* Interactor */,
+				22BFED9B1BB8CD16004E31CC /* InteractorTests */,
+				22BFED8D1BB8CD15004E31CC /* Products */,
+				67BC51668F337B28C514F4E4 /* Pods */,
+				748F0A899240105C757E2D25 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		22BFED8D1BB8CD15004E31CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22BFED8C1BB8CD15004E31CC /* libInteractor.a */,
+				22BFED971BB8CD16004E31CC /* InteractorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22BFED8E1BB8CD15004E31CC /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				22BFED8F1BB8CD16004E31CC /* CNInteractor.h */,
+				22BFEDAD1BB8D0DB004E31CC /* CNDataItem.h */,
+				22BFEDAE1BB8D0DB004E31CC /* CNDataItem.m */,
+				22BFEDB51BB8D413004E31CC /* CNDataItemBuilder.h */,
+				22BFEDB61BB8D413004E31CC /* CNDataItemBuilder.m */,
+				22BFEDAA1BB8D031004E31CC /* CNInteractorIO.h */,
+				22BFEDB21BB8D246004E31CC /* CNMainInteractor.h */,
+				22BFEDB31BB8D246004E31CC /* CNMainInteractor.m */,
+				22BFEDA61BB8CF2A004E31CC /* Supporting Files */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		22BFED9B1BB8CD16004E31CC /* InteractorTests */ = {
+			isa = PBXGroup;
+			children = (
+				22BFED9C1BB8CD16004E31CC /* Supporting Files */,
+			);
+			path = InteractorTests;
+			sourceTree = "<group>";
+		};
+		22BFED9C1BB8CD16004E31CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22BFED9D1BB8CD16004E31CC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22BFEDA61BB8CF2A004E31CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22BFEDA71BB8CF44004E31CC /* Interactor-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		67BC51668F337B28C514F4E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE981E60F913C97C1DD668EC /* Pods.debug.xcconfig */,
+				85F3C1F5DF8EFED993783CB8 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		748F0A899240105C757E2D25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1E41A4C00C017FE9BC42D83 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22BFED8B1BB8CD15004E31CC /* Interactor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22BFEDA01BB8CD16004E31CC /* Build configuration list for PBXNativeTarget "Interactor" */;
+			buildPhases = (
+				59424C8F2A48669A26DA1F89 /* Check Pods Manifest.lock */,
+				22BFED881BB8CD15004E31CC /* Sources */,
+				22BFED891BB8CD15004E31CC /* Frameworks */,
+				22BFED8A1BB8CD15004E31CC /* CopyFiles */,
+				E415881F25AC6DD5B3F98235 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Interactor;
+			productName = Interactor;
+			productReference = 22BFED8C1BB8CD15004E31CC /* libInteractor.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		22BFED961BB8CD16004E31CC /* InteractorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22BFEDA31BB8CD16004E31CC /* Build configuration list for PBXNativeTarget "InteractorTests" */;
+			buildPhases = (
+				22BFED931BB8CD16004E31CC /* Sources */,
+				22BFED941BB8CD16004E31CC /* Frameworks */,
+				22BFED951BB8CD16004E31CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22BFED9A1BB8CD16004E31CC /* PBXTargetDependency */,
+			);
+			name = InteractorTests;
+			productName = InteractorTests;
+			productReference = 22BFED971BB8CD16004E31CC /* InteractorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22BFED841BB8CD15004E31CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = YusipovTimur;
+				TargetAttributes = {
+					22BFED8B1BB8CD15004E31CC = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					22BFED961BB8CD16004E31CC = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 22BFED871BB8CD15004E31CC /* Build configuration list for PBXProject "Interactor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 22BFED831BB8CD15004E31CC;
+			productRefGroup = 22BFED8D1BB8CD15004E31CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22BFED8B1BB8CD15004E31CC /* Interactor */,
+				22BFED961BB8CD16004E31CC /* InteractorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22BFED951BB8CD16004E31CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		59424C8F2A48669A26DA1F89 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E415881F25AC6DD5B3F98235 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22BFED881BB8CD15004E31CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22BFEDB71BB8D413004E31CC /* CNDataItemBuilder.m in Sources */,
+				22BFEDB41BB8D246004E31CC /* CNMainInteractor.m in Sources */,
+				22BFEDAF1BB8D0DB004E31CC /* CNDataItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22BFED931BB8CD16004E31CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22BFED9A1BB8CD16004E31CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22BFED8B1BB8CD15004E31CC /* Interactor */;
+			targetProxy = 22BFED991BB8CD16004E31CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		22BFED9E1BB8CD16004E31CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		22BFED9F1BB8CD16004E31CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22BFEDA11BB8CD16004E31CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE981E60F913C97C1DD668EC /* Pods.debug.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Interactor/Interactor-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		22BFEDA21BB8CD16004E31CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85F3C1F5DF8EFED993783CB8 /* Pods.release.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Interactor/Interactor-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		22BFEDA41BB8CD16004E31CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = InteractorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		22BFEDA51BB8CD16004E31CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = InteractorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22BFED871BB8CD15004E31CC /* Build configuration list for PBXProject "Interactor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22BFED9E1BB8CD16004E31CC /* Debug */,
+				22BFED9F1BB8CD16004E31CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22BFEDA01BB8CD16004E31CC /* Build configuration list for PBXNativeTarget "Interactor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22BFEDA11BB8CD16004E31CC /* Debug */,
+				22BFEDA21BB8CD16004E31CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22BFEDA31BB8CD16004E31CC /* Build configuration list for PBXNativeTarget "InteractorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22BFEDA41BB8CD16004E31CC /* Debug */,
+				22BFEDA51BB8CD16004E31CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22BFED841BB8CD15004E31CC /* Project object */;
+}

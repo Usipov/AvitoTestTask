@@ -15,4 +15,6 @@
 
 - (void)fetchUsersWithCompletion:(ArrayBlock)block;
 
+- (void)createUsersOnJson:(NSArray *)json withCompletion:(ArrayBlock)block;
+
 @end

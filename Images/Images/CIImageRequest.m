@@ -11,7 +11,7 @@
 
 @interface CIImageRequest ()
 
-@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *pathToStoreImage;
 @end
@@ -20,7 +20,7 @@
 
 @implementation CIImageRequest
 
-- (instancetype)initWithId:(NSString *)id url:(NSString *)url {
+- (instancetype)initWithId:(NSNumber *)id url:(NSString *)url {
     if (! id)
         return nil;
     if (! url)
@@ -49,9 +49,9 @@
         return _pathToStoreImage;
     
     NSString *rootPath = [[CIImageLocating new] rootImageLocation];
-    NSString *md5 = [self.id md5Hash];
+    NSString *md5 = [self.id.description md5Hash];
     NSString *result = [[[rootPath stringByAppendingPathComponent:md5]
-                         stringByAppendingPathComponent:self.id]
+                         stringByAppendingPathComponent:self.id.description]
                         stringByAppendingPathExtension:@".png"];
     _pathToStoreImage = result;
     return result;
@@ -66,7 +66,7 @@
         return NO;
     
     CIImageRequest *another = object;
-    return [self.id isEqualToString:another.id];
+    return [self.id isEqual:another.id];
 }
 
 @end

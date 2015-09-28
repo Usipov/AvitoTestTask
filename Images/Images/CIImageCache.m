@@ -37,7 +37,7 @@
     @throw [NSException exceptionWithName:CUUTILS_ERROR reason:CUUTILS_MESSAGE_ABSTRACT_METHOD userInfo:nil];
 }
 
-- (void)thumbImageForRequest: (CIImageRequest *)request completion:(IdBlock)block {
+- (void)imageForRequest:(CIImageRequest *)request completion:(IdBlock)block {
     if (! request.pathToStoreImage)
         return;
     if (! block)
@@ -83,7 +83,7 @@
     [self.operationQueues cancelAllOperations];
 }
 
-- (void)removeThumbForRequest:(CIImageRequest *)request {
+- (void)removeImageForRequest:(CIImageRequest *)request {
     if (! request.pathToStoreImage)
         return;
     

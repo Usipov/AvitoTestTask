@@ -1,0 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
+
+pod 'AvitoTestTask/Utils', :path => '..'
+pod 'AvitoTestTask/Networking', :path => '..'
+pod 'AvitoTestTask/Images', :path => '..'
+pod 'AvitoTestTask/CoreData', :path => '..'
+pod 'AvitoTestTask/Model', :path => '..'

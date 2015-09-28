@@ -10,10 +10,10 @@
 
 @interface CIImageRequest : NSObject
 
-@property (strong, nonatomic, readonly) NSString *id;
+@property (strong, nonatomic, readonly) NSNumber *id;
 @property (strong, nonatomic, readonly) NSString *url;
 
-- (instancetype)initWithId:(NSString *)id url:(NSString *)url;
+- (instancetype)initWithId:(NSNumber *)id url:(NSString *)url;
 
 - (NSString *)pathToStoreImage;
 

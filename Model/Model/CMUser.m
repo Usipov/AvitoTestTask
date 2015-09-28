@@ -35,6 +35,9 @@
 @implementation CMUser
 
 - (instancetype)initWithBuilder:(CMUserBuilder *)builder {
+    if (! builder)
+        return nil;
+    
     self = [super init];
     if (self) {
         self.login = builder.login;

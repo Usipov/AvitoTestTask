@@ -43,7 +43,7 @@
 		2207E7541BB8A53B007B554A /* CMModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMModel.h; sourceTree = "<group>"; };
 		2207E75C1BB8A53B007B554A /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2207E7621BB8A53B007B554A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2207E76C1BB8A61C007B554A /* Model-Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model-Prefix.h"; sourceTree = "<group>"; };
+		2207E76C1BB8A61C007B554A /* Model-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model-Prefix.pch"; sourceTree = "<group>"; };
 		2207E76F1BB8A6A4007B554A /* CMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUser.h; sourceTree = "<group>"; };
 		2207E7701BB8A6A4007B554A /* CMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMUser.m; sourceTree = "<group>"; };
 		2207E7721BB8A6F9007B554A /* CMUserBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUserBuilder.h; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		2207E76B1BB8A5FB007B554A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2207E76C1BB8A61C007B554A /* Model-Prefix.h */,
+				2207E76C1BB8A61C007B554A /* Model-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -381,7 +381,7 @@
 			baseConfigurationReference = B7DF5D1D8AD7DEF49354F781 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Model/Model-Prefix.h";
+				GCC_PREFIX_HEADER = "Model/Model-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -393,7 +393,7 @@
 			baseConfigurationReference = 46080E35ABD1597A3A6C3923 /* Pods.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Model/Model-Prefix.h";
+				GCC_PREFIX_HEADER = "Model/Model-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

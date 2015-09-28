@@ -53,4 +53,43 @@
     return result;
 }
 
+- (void)createUsersOnJson:(NSArray *)json withCompletion:(ArrayBlock)block {
+    WSELF;
+    doInBackground(^{
+        NSArray *users = [json bk_map:^id(NSDictionary *userData) {
+
+            User *user = [self.coreDataManager newUser];
+            
+            user.login = userData[@"login"];
+            user.id = userData[@"id"];
+            user.avatarUrl = userData[@"avatarUrl"];
+            user.gravatarId = userData[@"gravatarId"];
+            user.url = userData[@"url"];
+            user.htmlUrl = userData[@"htmlUrl"];
+            user.followersUrl = userData[@"followersUrl"];
+            user.followingUrl = userData[@"followingUrl"];
+            user.gistsUrl = userData[@"gistsUrl"];
+            user.starredUrl = userData[@"starredUrl"];
+            user.subscriptionsUrl = userData[@"subscriptionsUrl"];
+            user.organizationsUrl = userData[@"organizationsUrl"];
+            user.reposUrl = userData[@"reposUrl"];
+            user.eventsUrl = userData[@"eventsUrl"];
+            user.receivedEventsUrl = userData[@"receivedEventsUrl"];
+            user.type = userData[@"type"];
+            user.siteAdmin = userData[@"siteAdmin"];
+            
+            return user;
+        }];
+        
+        [wself.coreDataManager saveCoreData];
+        
+        NSArray *modelUsers = [wself modelUsersFromCoreDataUsers:users];
+        doOnMain(^{
+            if (block) {
+                block(modelUsers);
+            }
+        });
+    });
+}
+
 @end

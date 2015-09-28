@@ -14,9 +14,9 @@
 
 - (id)initWithOperationQueues:(CIOperationQueues *)operationQueues;
 
-- (void)thumbImageForRequest: (CIImageRequest *)request completion:(IdBlock)block;
+- (void)imageForRequest:(CIImageRequest *)request completion:(IdBlock)block;
 - (void)removeAllObjects;
 - (void)cancelAllOperations;
-- (void)removeThumbForRequest:(CIImageRequest *)request;
+- (void)removeImageForRequest:(CIImageRequest *)request;
 
 @end
