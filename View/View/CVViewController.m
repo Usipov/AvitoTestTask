@@ -8,10 +8,15 @@
 
 #import "CVViewController.h"
 #import "CVEmptyView.h"
+#import "CVNoInternetConnectionView.h"
+#import "CVLoadingView.h"
 
 @interface CVViewController ()
 @property (strong, nonatomic) CVEmptyView *emptyView;
+@property (strong, nonatomic) CVLoadingView *loadingView;
+@property (strong, nonatomic) CVNoInternetConnectionView *noInternetView;
 @property (strong, nonatomic) NSArray *interfaceItems;
+@property (weak, nonatomic) UIView *topView;
 @end
 
 @implementation CVViewController
@@ -19,8 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
-    self.emptyView = [CVEmptyView new];
     self.navigationItem.title = @"Users";
     
     self.navigationItem.rightBarButtonItem
@@ -42,15 +45,24 @@
     self.navigationItem.leftBarButtonItems = @[deleteStoreButtonItem, deleteThumbsButtonItem];
 }
 
-- (void)setBeingUpdated {
-    [self.view addSubview:self.emptyView];
-}
-
 - (void)showInterfaceItems:(NSArray *)interfaceItems {
     [self.emptyView removeFromSuperview];
     
     self.interfaceItems = interfaceItems;
     [self.tableView reloadData];
+}
+
+
+- (void)setBeingUpdated {
+    [self showViewAboveTheTableView:self.loadingView];
+}
+
+- (void)showNoInternetConnectionMessage {
+    [self showViewAboveTheTableView:self.noInternetView];
+}
+
+- (void)showIsEmptyMessage {
+    [self showViewAboveTheTableView:self.emptyView];
 }
 
 - (void)updateViewForInterfaceItem:(CVInterfaceItem *)item {
@@ -75,18 +87,83 @@
     return [self.interfaceItems indexOfObject:item];
 }
 
-#pragma mark - actions 
+- (void)showViewAboveTheTableView:(UIView *)view {
+    if (! view)
+        return;
+    
+    [self.topView removeFromSuperview];
+    self.topView = view;
+    
+    [self.view addSubview:view];
+    WSELF;
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(wself.view);
+    }];
+}
+
+- (void)showConfirmationAlertWithMessage:(NSString *)message action:(BasicBlock)action {
+    if (! action)
+        return;
+    if (! message)
+        return;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [UIAlertView bk_showAlertViewWithTitle:@"Please confirm"
+                                       message:message
+                             cancelButtonTitle:@"NO"
+                             otherButtonTitles:@[@"YES"]
+                                       handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                           if (alertView.cancelButtonIndex != buttonIndex) {
+                                               action();
+                                           }
+                                       }];
+    }];
+}
+
+#pragma mark - lazy properties
+
+- (CVEmptyView *)emptyView {
+    if (! _emptyView) {
+        _emptyView = [[CVEmptyView alloc] initWithFrame:self.view.bounds];
+    }
+    return _emptyView;
+}
+
+- (CVLoadingView *)loadingView {
+    if (! _loadingView) {
+        _loadingView = [[CVLoadingView alloc] initWithFrame:self.view.bounds];
+    }
+    return _loadingView;
+}
+
+- (CVNoInternetConnectionView *)noInternetView {
+    if (! _noInternetView) {
+        _noInternetView = [[CVNoInternetConnectionView alloc] initWithFrame:self.view.bounds];
+    }
+    return _noInternetView;
+}
+
+#pragma mark - actions
 
 - (void)onRefreshTapped:(UIBarButtonItem *)sender {
-    [self.eventsHandler didRequestViewUpdate];
+    WSELF;
+    [self showConfirmationAlertWithMessage:@"Are you sure you want to refresh?" action:^{
+        [wself.eventsHandler didRequestViewUpdate];
+    }];
 }
 
 - (void)onTrashThumbsTapped:(UIBarButtonItem *)sender {
-    [self.eventsHandler didRequestTrashingThumbs];
+    WSELF;
+    [self showConfirmationAlertWithMessage:@"Are you sure you want to delete images from disk?" action:^{
+        [wself.eventsHandler didRequestTrashingThumbs];
+    }];
 }
 
 - (void)onTrashStoreTapped:(UIBarButtonItem *)sender {
-    [self.eventsHandler didRequestTrashingStore];
+    WSELF;
+    [self showConfirmationAlertWithMessage:@"Are you sure you want to clear storage?" action:^{
+        [wself.eventsHandler didRequestTrashingStore];
+    }];
 }
 
 #pragma mark - UITableView

@@ -12,6 +12,8 @@
 		22BFEDEC1BB8DD10004E31CC /* CVEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFEDEB1BB8DD10004E31CC /* CVEmptyView.m */; };
 		22BFEDEF1BB8DD54004E31CC /* CVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFEDEE1BB8DD54004E31CC /* CVViewController.m */; };
 		22BFEDF51BB8DDDD004E31CC /* CVInterfaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BFEDF41BB8DDDD004E31CC /* CVInterfaceItem.m */; };
+		22EB0A2C1BB9167A00FF3AD2 /* CVLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EB0A2B1BB9167A00FF3AD2 /* CVLoadingView.m */; };
+		22EB0A2F1BB9179000FF3AD2 /* CVNoInternetConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EB0A2E1BB9179000FF3AD2 /* CVNoInternetConnectionView.m */; };
 		23D04E742A376842854E00E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C6CBA1D1E7FBF3EAFB4275 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,10 @@
 		22BFEDF61BB8DEE6004E31CC /* View-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View-Prefix.pch"; sourceTree = "<group>"; };
 		22BFEDF91BB8DF04004E31CC /* CVView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVView.h; sourceTree = "<group>"; };
 		22BFEDFC1BB8E3F3004E31CC /* CVInterfaceEventsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVInterfaceEventsProtocol.h; sourceTree = "<group>"; };
+		22EB0A2A1BB9167A00FF3AD2 /* CVLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVLoadingView.h; sourceTree = "<group>"; };
+		22EB0A2B1BB9167A00FF3AD2 /* CVLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVLoadingView.m; sourceTree = "<group>"; };
+		22EB0A2D1BB9179000FF3AD2 /* CVNoInternetConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVNoInternetConnectionView.h; sourceTree = "<group>"; };
+		22EB0A2E1BB9179000FF3AD2 /* CVNoInternetConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVNoInternetConnectionView.m; sourceTree = "<group>"; };
 		8AB40FD8D757846E18E7F961 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		91C6CBA1D1E7FBF3EAFB4275 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1109071145B92A78C969C38 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +98,10 @@
 				22BFEDF91BB8DF04004E31CC /* CVView.h */,
 				22BFEDEA1BB8DD10004E31CC /* CVEmptyView.h */,
 				22BFEDEB1BB8DD10004E31CC /* CVEmptyView.m */,
+				22EB0A2A1BB9167A00FF3AD2 /* CVLoadingView.h */,
+				22EB0A2B1BB9167A00FF3AD2 /* CVLoadingView.m */,
+				22EB0A2D1BB9179000FF3AD2 /* CVNoInternetConnectionView.h */,
+				22EB0A2E1BB9179000FF3AD2 /* CVNoInternetConnectionView.m */,
 				22BFEDED1BB8DD54004E31CC /* CVViewController.h */,
 				22BFEDEE1BB8DD54004E31CC /* CVViewController.m */,
 				22BFEDF01BB8DD97004E31CC /* CVInterfaceProtocol.h */,
@@ -283,6 +293,8 @@
 				22BFEDC71BB8DB1D004E31CC /* main.m in Sources */,
 				22BFEDF51BB8DDDD004E31CC /* CVInterfaceItem.m in Sources */,
 				22BFEDEC1BB8DD10004E31CC /* CVEmptyView.m in Sources */,
+				22EB0A2C1BB9167A00FF3AD2 /* CVLoadingView.m in Sources */,
+				22EB0A2F1BB9179000FF3AD2 /* CVNoInternetConnectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

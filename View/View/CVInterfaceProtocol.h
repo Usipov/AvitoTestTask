@@ -11,9 +11,13 @@
 
 @protocol CVInterfaceProtocol <NSObject>
 
+- (void)showInterfaceItems:(NSArray *)interfaceItems;
+
 - (void)setBeingUpdated;
 
-- (void)showInterfaceItems:(NSArray *)interfaceItems;
+- (void)showNoInternetConnectionMessage;
+
+- (void)showIsEmptyMessage;
 
 - (void)updateViewForInterfaceItem:(CVInterfaceItem *)item;
 
