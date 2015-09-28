@@ -34,7 +34,7 @@
       "prefix_header_file": "CoreData/CoreData/CoreData-Prefix.pch",
       "resources": "CoreData/CoreData/**/*.{bundle,plist}",
       "dependencies": {
-        "Avito/Utils": [
+        "AvitoTestTask/Utils": [
 
         ],
         "MagicalRecord": [
@@ -49,7 +49,7 @@
       "prefix_header_file": "Model/Model/Model-Prefix.pch",
       "resources": "Model/Model/**/*.{bundle,plist}",
       "dependencies": {
-        "Avito/CoreData": [
+        "AvitoTestTask/CoreData": [
 
         ]
       }
@@ -60,7 +60,7 @@
       "prefix_header_file": "Networking/Networking/Networking-Prefix.pch",
       "resources": "Networking/Networking/**/*.{bundle,plist}",
       "dependencies": {
-        "Avito/Utils": [
+        "AvitoTestTask/Utils": [
 
         ],
         "AFNetworking": [
@@ -69,12 +69,12 @@
       }
     },
     {
-      "name": "AsyncImages",
-      "source_files": "AsyncImages/AsyncImages/**/*.{h,m,mm}",
-      "prefix_header_file": "AsyncImages/AsyncImages/AsyncImages-Prefix.pch",
-      "resources": "AsyncImages/AsyncImages/**/*.{bundle,plist}",
+      "name": "Images",
+      "source_files": "Images/Images/**/*.{h,m,mm}",
+      "prefix_header_file": "Images/Images/Images-Prefix.pch",
+      "resources": "Images/Images/**/*.{bundle,plist}",
       "dependencies": {
-        "Avito/Networking": [
+        "AvitoTestTask/Networking": [
 
         ]
       }
@@ -85,10 +85,10 @@
       "source_files": "Interactor/Interactor/**/*.{h,m,mm}",
       "resources": "Interactor/Interactor/**/*.{bundle,plist}",
       "dependencies": {
-        "Avito/Model": [
+        "AvitoTestTask/Model": [
 
         ],
-        "Avito/AsyncImages": [
+        "AvitoTestTask/Images": [
 
         ]
       }
@@ -110,10 +110,10 @@
       "source_files": "Presenter/Presenter/**/*.{h,m,mm}",
       "resources": "Presenter/Presenter/**/*.{bundle,plist}",
       "dependencies": {
-        "Avito/Interactor": [
+        "AvitoTestTask/Interactor": [
 
         ],
-        "Avito/View": [
+        "AvitoTestTask/View": [
 
         ]
       }

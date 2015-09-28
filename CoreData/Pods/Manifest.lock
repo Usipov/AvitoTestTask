@@ -31,7 +31,7 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  AvitoTestTask: 4c9eb121e5ef0e68463baf2aa097afb44818c016
+  AvitoTestTask: b032d8e21d81176d0bb903d6de41f96eada1a83f
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

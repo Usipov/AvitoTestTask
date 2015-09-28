@@ -12,11 +12,6 @@ cd CoreData
 pod install
 cd ..
 
-echo ...........Core...........
-cd Core
-pod install
-cd ..
-
 echo ...........Model...........
 cd Model
 pod install
