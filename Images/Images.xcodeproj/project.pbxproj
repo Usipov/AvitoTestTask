@@ -43,6 +43,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		226586B71BB9BFBF00213B09 /* CIImageCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIImageCacheProtocol.h; sourceTree = "<group>"; };
 		22BFED541BB8B726004E31CC /* libImages.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libImages.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BFED571BB8B726004E31CC /* CIImages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIImages.h; sourceTree = "<group>"; };
 		22BFED5F1BB8B726004E31CC /* ImagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +113,7 @@
 			children = (
 				22BFED571BB8B726004E31CC /* CIImages.h */,
 				22BFED701BB8B862004E31CC /* CIImageCache.h */,
+				226586B71BB9BFBF00213B09 /* CIImageCacheProtocol.h */,
 				22BFED711BB8B862004E31CC /* CIImageCache.m */,
 				22BFED731BB8B884004E31CC /* CIOperationQueues.h */,
 				22BFED741BB8B884004E31CC /* CIOperationQueues.m */,

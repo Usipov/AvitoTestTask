@@ -56,10 +56,6 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - Crashlytics (3.3.1)
-  - Fabric (1.5.1):
-    - Fabric/Base (= 1.5.1)
-  - Fabric/Base (1.5.1)
   - MagicalRecord (2.2):
     - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
@@ -75,8 +71,6 @@ DEPENDENCIES:
   - AvitoTestTask/Presenter (from `..`)
   - AvitoTestTask/Utils (from `..`)
   - AvitoTestTask/View (from `..`)
-  - Crashlytics
-  - Fabric
   - MagicalRecord (= 2.2)
 
 EXTERNAL SOURCES:
@@ -87,8 +81,6 @@ SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   AvitoTestTask: b032d8e21d81176d0bb903d6de41f96eada1a83f
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  Crashlytics: 0e61bdda9def51f1e99720f804eebe94865442b2
-  Fabric: 03c3b3fe77e11a2bc31421b989a9c7adaa4779a5
   MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

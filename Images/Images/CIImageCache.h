@@ -10,16 +10,10 @@
 #import "CIImageRequest.h"
 #import "CIOperationQueues.h"
 #import "CIImageLocating.h"
+#import "CIImageCacheProtocol.h"
 
-@interface CIImageCache : NSObject
+@interface CIImageCache : NSObject <CIImageCacheProtocol>
 
 - (id)initWithOperationQueues:(CIOperationQueues *)operationQueues imageLocating:(CIImageLocating *)locating;
-
-- (void)imageForRequest:(CIImageRequest *)request completion:(IdBlock)block;
-- (void)cancelGettingImageForRequest:(CIImageRequest *)request;
-- (void)removeAllObjects;
-- (void)clearAllObjects;
-- (void)cancelAllOperations;
-- (void)removeImageForRequest:(CIImageRequest *)request;
 
 @end

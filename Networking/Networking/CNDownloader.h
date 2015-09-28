@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CNDowloaderProtocol.h"
 
-@interface CNDownloader : NSObject
-
-- (NSOperation *)dowloadDataFromURL:(NSString *)url completion:(DataBlock)block error:(ErrorBlock)errorBlock;
-
-- (NSOperation *)downloadArrayFromURL:(NSString *)url completion:(ArrayBlock)block error:(ErrorBlock)errorBlock;
+@interface CNDownloader : NSObject <CNDowloaderProtocol>
 
 @end

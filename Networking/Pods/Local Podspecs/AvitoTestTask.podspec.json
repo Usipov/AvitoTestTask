@@ -69,10 +69,10 @@
       }
     },
     {
-      "name": "AsyncImages",
-      "source_files": "AsyncImages/AsyncImages/**/*.{h,m,mm}",
-      "prefix_header_file": "AsyncImages/AsyncImages/AsyncImages-Prefix.pch",
-      "resources": "AsyncImages/AsyncImages/**/*.{bundle,plist}",
+      "name": "Images",
+      "source_files": "Images/Images/**/*.{h,m,mm}",
+      "prefix_header_file": "Images/Images/Images-Prefix.pch",
+      "resources": "Images/Images/**/*.{bundle,plist}",
       "dependencies": {
         "AvitoTestTask/Networking": [
 
@@ -88,7 +88,7 @@
         "AvitoTestTask/Model": [
 
         ],
-        "AvitoTestTask/AsyncImages": [
+        "AvitoTestTask/Images": [
 
         ]
       }

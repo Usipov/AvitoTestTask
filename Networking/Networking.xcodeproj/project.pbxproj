@@ -42,6 +42,7 @@
 		2207E79F1BB8B19E007B554A /* CNNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNNetworking.h; sourceTree = "<group>"; };
 		2207E7A21BB8B20A007B554A /* CNDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNDownloader.h; sourceTree = "<group>"; };
 		2207E7A31BB8B20A007B554A /* CNDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNDownloader.m; sourceTree = "<group>"; };
+		22E9CFB41BB9BF2C0041C27F /* CNDowloaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNDowloaderProtocol.h; sourceTree = "<group>"; };
 		3A63D564955B5F25F4B0499D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3D9B02755FD5FC988F9B245 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A508D0C7B5E633203C0554A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				2207E79F1BB8B19E007B554A /* CNNetworking.h */,
+				22E9CFB41BB9BF2C0041C27F /* CNDowloaderProtocol.h */,
 				2207E7A21BB8B20A007B554A /* CNDownloader.h */,
 				2207E7A31BB8B20A007B554A /* CNDownloader.m */,
 				2207E79B1BB8B13E007B554A /* Supporting Files */,

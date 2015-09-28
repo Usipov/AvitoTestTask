@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "180A4C98C06EF92E5F194D6B"
+               BlueprintIdentifier = "8573B27968CACE743A5B8566"
                BuildableName = "libAvitoTestTask.a"
                BlueprintName = "AvitoTestTask"
                ReferencedContainer = "container:Pods.xcodeproj">
