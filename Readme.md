@@ -1,82 +1,42 @@
-Pod::Spec.new do |s|
-  s.name         = 'AvitoTestTask'
-  s.version      = '0.0.0'
-  s.summary      = 'Avito-Test-Task-by-Timur-Yusipov'
-  s.homepage     = 'https://github.com/Usipov/AvitoTestTask'
-  s.license      = 'MIT'
-  s.author       = { 'fizmatchel' => 'ykylele@gmail.com' }
-  s.source       = { :git => 'https://github.com/Usipov/AvitoTestTask.git', :branch => 'master' }
-  s.platform     = :ios, '7.0'
-  s.requires_arc = true
-  
+Тестовое задание попытался сделать с архитектурой VIPER, правда без Router'а, 
+потому что решил не делать его для одного экранчика.
 
-  s.subspec 'Utils' do |utils|
-    utils.source_files = 'Utils/Utils/*.{h,m,mm}'
 
-    utils.dependency 'BlocksKit'
-    utils.dependency 'Reachability'
-  end
+### Основные модули ###
 
-  s.subspec 'CoreData' do |coreData|
-    coreData.source_files = 'CoreData/CoreData/**/*.{h,m,mm}'
-    coreData.prefix_header_file = 'CoreData/CoreData/CoreData-Prefix.pch'
-    coreData.resources    = 'CoreData/CoreData/**/*.{bundle,plist}'    
+1. View: 
+содержит контроллер и его представления. View умеет сообщать Presenter'у о событиях. View не просит данные у Presenterэа
 
-    coreData.dependency 'AvitoTestTask/Utils'
-    coreData.dependency 'MagicalRecord', '2.2'
+2. Presenter:
+умеет настраивать View согласно имеющимся данным для отображения. Presenter не знает ничего про сервисы. Знает только про Interactor'а, у которого просит данные для отображения.
 
-    coreData.frameworks = 'CoreData'
-  end
+3. Interactor:
+центрирует в себе бизнес-логику. Знает с какого url качать данные. Сам только раздает указания сервисам: сервису загрузки данных, сервису загрузки и кэширования картинок, модели
 
-   s.subspec 'Model' do |model|
-    model.source_files = 'Model/Model/**/*.{h,m,mm}'
-    model.prefix_header_file = 'Model/Model/Model-Prefix.pch'
-    model.resources    = 'Model/Model/**/*.{bundle,plist}'
+4. Model:
+знает как именно хранить данные, знает как их вычитывать. Делает это через сервис
 
-    model.dependency 'AvitoTestTask/CoreData'    
-  end
+5. Router:
+должен содержать flow прохождения по экранам приложения
 
-  s.subspec 'Networking' do |networking|
-    networking.source_files = 'Networking/Networking/**/*.{h,m,mm}'
-    networking.prefix_header_file = 'Networking/Networking/Networking-Prefix.pch'
-    networking.resources    = 'Networking/Networking/**/*.{bundle,plist}'
 
-    networking.dependency 'AvitoTestTask/Utils'
-    networking.dependency 'AFNetworking'
-  end
+### Кто кого retain'ит ###
 
-  s.subspec 'Images' do |images|
-    images.source_files = 'Images/Images/**/*.{h,m,mm}'
-    images.prefix_header_file = 'Images/Images/Images-Prefix.pch'
-    images.resources    = 'Images/Images/**/*.{bundle,plist}'
+Исходил из логики, что View (контроллер) и так живет в памяти посредством окошка, контроллеров навигации, таббара и других. 
+Поэтому его лишний раз можно не retain'ить. View сильно ссылается на Presenter'а. Presenter сильно ссылается на Interactor'а.
+Interactor сильно ссылается на сервисы. Сервисы не ссылаются на Interactor'а: общаются с ним через callback-блоки. 
+Intearactor слабо ссылается на Presenter'а, чтобы давать ему данные. Presenter слабо ссылается на View, чтобы настраивать его.
 
-    images.dependency 'AvitoTestTask/Networking'
-  end
+Старался в каждом модуле выделить свои PONSO (NSObject'ы). 
+Так сделано, чтобы обратить внимание на то, что модель редактируется только в одном месте. 
+Эти PONSO к тому же как правило неизменяемые (как бонус для многопоточности). 
+Создаются PONSO как правило через строителей.
 
-  s.subspec 'Interactor' do |interactor|
-    interactor.prefix_header_file = 'Interactor/Interactor/Interactor-Prefix.pch'
-    interactor.source_files = 'Interactor/Interactor/**/*.{h,m,mm}'
-    interactor.resources    = 'Interactor/Interactor/**/*.{bundle,plist}'    
 
-    interactor.dependency 'AvitoTestTask/Model'
-    interactor.dependency 'AvitoTestTask/Images'
-  end
+### Подпроекты ###
 
-  s.subspec 'View' do |view|
-    view.prefix_header_file = 'View/View/View-Prefix.pch'
-    view.source_files = 'View/View/**/*.{h,m,mm}'
-    view.resources    = 'View/View/**/*.{storyboard,png,xib,bundle,plist}'
-
-    view.dependency 'Masonry'
-  end
-
-  s.subspec 'Presenter' do |presenter|
-    presenter.prefix_header_file = 'Presenter/Presenter/Presenter-Prefix.pch'
-    presenter.source_files = 'Presenter/Presenter/**/*.{h,m,mm}'
-    presenter.resources    = 'Presenter/Presenter/**/*.{bundle,plist}'
-
-    presenter.dependency 'AvitoTestTask/Interactor'
-    presenter.dependency 'AvitoTestTask/View'    
-  end
-
-end
+Utils - просто набор удобных методов
+CoreData - умеет инициализировать стек CoreData, знает где искать файл модели, где хранить базу данных
+Model - умеет обращаться к CoreData для записи и вычитывания данных
+Networking - умеет асинхронно загружать данные из сети
+Images - умеет асинхронно загружать данные из сети, кэшировать их и записывать их на диск.
