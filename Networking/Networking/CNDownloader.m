@@ -16,42 +16,42 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    return [self dowloadObjectFromURL:url
-                          withManager:manager
-                           completion:^(id obj) {
-                               NSData *data = [obj isKindOfClass:[NSData self]] ? obj : nil;
-                               block(data);
-                           } error:^(NSError *error) {
-                               if (errorBlock) {
-                                   errorBlock(error);
-                               }
-                           }];
+    return [self downloadObjectFromURL:url
+                           withManager:manager
+                            completion:^(id obj) {
+                                NSData *data = [obj isKindOfClass:[NSData self]] ? obj : nil;
+                                block(data);
+                            } error:^(NSError *error) {
+                                if (errorBlock) {
+                                    errorBlock(error);
+                                }
+                            }];
 }
 
-- (NSOperation *)dowloadArrayFromURL:(NSString *)url completion:(ArrayBlock)block error:(ErrorBlock)errorBlock {
+- (NSOperation *)downloadArrayFromURL:(NSString *)url completion:(ArrayBlock)block error:(ErrorBlock)errorBlock {
     if (! block)
         return nil;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-
-    return [self dowloadObjectFromURL:url
-                          withManager:manager
-                           completion:^(id obj) {
-                               NSArray *array = [obj isKindOfClass:[NSArray self]] ? obj : nil;
-                               block(array);
-                           } error:^(NSError *error) {
-                               if (errorBlock) {
-                                   errorBlock(error);
-                               }
-                           }];
+    
+    return [self downloadObjectFromURL:url
+                           withManager:manager
+                            completion:^(id obj) {
+                                NSArray *array = [obj isKindOfClass:[NSArray self]] ? obj : nil;
+                                block(array);
+                            } error:^(NSError *error) {
+                                if (errorBlock) {
+                                    errorBlock(error);
+                                }
+                            }];
     
 }
 
-- (NSOperation *)dowloadObjectFromURL:(NSString *)url
-                          withManager:(AFHTTPRequestOperationManager *)manager
-                           completion:(IdBlock)block
-                                error:(ErrorBlock)errorBlock {
+- (NSOperation *)downloadObjectFromURL:(NSString *)url
+                           withManager:(AFHTTPRequestOperationManager *)manager
+                            completion:(IdBlock)block
+                                 error:(ErrorBlock)errorBlock {
     if (! block)
         return nil;
     

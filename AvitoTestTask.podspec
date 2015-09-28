@@ -45,10 +45,10 @@ Pod::Spec.new do |s|
     networking.dependency 'AFNetworking'
   end
 
-  s.subspec 'AsyncImages' do |images|
-    images.source_files = 'AsyncImages/AsyncImages/**/*.{h,m,mm}'
-    images.prefix_header_file = 'AsyncImages/AsyncImages/AsyncImages-Prefix.pch'
-    images.resources    = 'AsyncImages/AsyncImages/**/*.{bundle,plist}'
+  s.subspec 'Images' do |images|
+    images.source_files = 'Images/Images/**/*.{h,m,mm}'
+    images.prefix_header_file = 'Images/Images/Images-Prefix.pch'
+    images.resources    = 'Images/Images/**/*.{bundle,plist}'
 
     images.dependency 'AvitoTestTask/Networking'
   end
@@ -59,7 +59,7 @@ Pod::Spec.new do |s|
     interactor.resources    = 'Interactor/Interactor/**/*.{bundle,plist}'    
 
     interactor.dependency 'AvitoTestTask/Model'
-    interactor.dependency 'AvitoTestTask/AsyncImages'
+    interactor.dependency 'AvitoTestTask/Images'
   end
 
   s.subspec 'View' do |view|
