@@ -40,6 +40,7 @@
                                         [wself handleDownloadedItems:downloadedItems];
                                     } error:^(NSError *error) {
                                         DLog(@"%@", error);
+                                        [wself handleDownloadedItems:nil];
                                     }];
     } else {
         self.busyFindingItems = NO;

@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.navigationItem.title = @"Users";
     
     self.navigationItem.rightBarButtonItem
@@ -111,6 +111,7 @@
     }];
     
     [self.view layoutIfNeeded];
+    [self.topView layoutIfNeeded];
 }
 
 - (void)showConfirmationAlertWithMessage:(NSString *)message action:(BasicBlock)action {

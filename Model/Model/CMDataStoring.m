@@ -83,21 +83,21 @@
             
             user.login = userData[@"login"];
             user.id = userData[@"id"];
-            user.avatarUrl = userData[@"avatarUrl"];
-            user.gravatarId = userData[@"gravatarId"];
-            user.url = userData[@"url"];
-            user.htmlUrl = userData[@"htmlUrl"];
-            user.followersUrl = userData[@"followersUrl"];
-            user.followingUrl = userData[@"followingUrl"];
-            user.gistsUrl = userData[@"gistsUrl"];
-            user.starredUrl = userData[@"starredUrl"];
-            user.subscriptionsUrl = userData[@"subscriptionsUrl"];
-            user.organizationsUrl = userData[@"organizationsUrl"];
-            user.reposUrl = userData[@"reposUrl"];
-            user.eventsUrl = userData[@"eventsUrl"];
-            user.receivedEventsUrl = userData[@"receivedEventsUrl"];
+            user.avatarUrl = userData[@"avatar__url"];
+            user.gravatarId = userData[@"gravatar_id"];
+            user.url = userData[@"_url"];
+            user.htmlUrl = userData[@"html_url"];
+            user.followersUrl = userData[@"followers_url"];
+            user.followingUrl = userData[@"following_url"];
+            user.gistsUrl = userData[@"gists_url"];
+            user.starredUrl = userData[@"starred_url"];
+            user.subscriptionsUrl = userData[@"subscriptions_url"];
+            user.organizationsUrl = userData[@"organizations_url"];
+            user.reposUrl = userData[@"repos_url"];
+            user.eventsUrl = userData[@"events__url"];
+            user.receivedEventsUrl = userData[@"receivedEvents_url"];
             user.type = userData[@"type"];
-            user.siteAdmin = userData[@"siteAdmin"];
+            user.siteAdmin = userData[@"site_admin"];
             
             return user;
         }];

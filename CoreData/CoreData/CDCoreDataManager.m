@@ -21,22 +21,28 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSManagedObjectModel *model = [self setupManagedObjectModel];
-        [self setupCoreDataStackWithModel:model];
+        [self setupCoreDataStack];
     }
     return self;
 }
 
 #pragma mark - setup
 
+- (void)setupCoreDataStack {
+    NSManagedObjectModel *model = [self setupManagedObjectModel];
+    [self setupCoreDataStackWithModel:model];
+}
+
 - (NSManagedObjectModel *)setupManagedObjectModel {
     NSURL *modelURL = [self modelURL];
-    return [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    NSManagedObjectModel *result = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return result;
 }
 
 - (NSURL *)modelURL {
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"CoreData" withExtension:@"momd"];
-    return modelURL;
+    NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"CoreData" ofType:@"momd"];
+    NSURL *result = [NSURL fileURLWithPath:modelPath];
+    return result;
 }
 
 - (void)setupCoreDataStackWithModel:(NSManagedObjectModel *)model {
@@ -71,9 +77,9 @@
 
 - (void)clearCoreData {
     NSFileManager *manager = [NSFileManager new];
-    [manager removeItemAtURL:[self modelURL] error:nil];
+    [manager removeItemAtURL:[self storeUrl] error:nil];
     [MagicalRecord cleanUp];
-    [self setupCoreDataStackWithModel:[NSManagedObjectModel MR_defaultManagedObjectModel]];
+    [self setupCoreDataStack];
 }
 
 - (void)fetchUsersWithPredicate:(NSPredicate *)predicate

@@ -59,6 +59,7 @@
 
 - (void)didRequestTrashingStore {
     [self.interactor clearStorage];
+    [self didRequestViewUpdate];
 }
 
 - (void)willDisplayInterfaceItem:(CVInterfaceItem *)item {
