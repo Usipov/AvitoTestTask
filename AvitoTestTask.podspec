@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.subspec 'CoreData' do |coreData|
     coreData.source_files = 'CoreData/CoreData/**/*.{h,m,mm}'
     coreData.prefix_header_file = 'CoreData/CoreData/CoreData-Prefix.pch'
-    coreData.resources    = 'CoreData/CoreData/**/*.{bundle,plist}'    
+    coreData.resources    = 'CoreData/CoreData/**/*.{bundle,plist,xcdatamodeld}'    
 
     coreData.dependency 'AvitoTestTask/Utils'
     coreData.dependency 'MagicalRecord', '2.2'
