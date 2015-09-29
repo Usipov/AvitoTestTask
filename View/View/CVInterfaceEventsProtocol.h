@@ -11,6 +11,8 @@
 
 @protocol CVInterfaceEventsProtocol <NSObject>
 
+- (void)didAppear;
+
 - (void)didRequestViewUpdate;
 
 - (void)didRequestTrashingThumbs;

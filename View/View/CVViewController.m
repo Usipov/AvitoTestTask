@@ -44,7 +44,17 @@
     deleteStoreButtonItem.tintColor = [UIColor redColor];
     
     self.navigationItem.leftBarButtonItems = @[deleteStoreButtonItem, deleteThumbsButtonItem];
+    
+    // скрываем лишние разделители клеток
+    self.tableView.tableFooterView = [UIView new];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.eventsHandler didAppear];
+}
+
+#pragma mark - CVInterfaceProtocol
 
 - (void)showInterfaceItems:(NSArray *)interfaceItems {
     [self.emptyView removeFromSuperview];
@@ -52,7 +62,6 @@
     self.interfaceItems = interfaceItems;
     [self.tableView reloadData];
 }
-
 
 - (void)setBeingUpdated {
     [self showViewAboveTheTableView:self.loadingView];
@@ -100,6 +109,8 @@
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(wself.view);
     }];
+    
+    [self.view layoutIfNeeded];
 }
 
 - (void)showConfirmationAlertWithMessage:(NSString *)message action:(BasicBlock)action {

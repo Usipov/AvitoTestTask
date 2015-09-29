@@ -27,18 +27,26 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    // модель
+    CDCoreDataManager *coreData = [CDCoreDataManager new];
+    CMDataStoring *storing = [[CMDataStoring alloc] initWithCoreData:coreData];
+    
+    // сервисы интерактора
     CIOperationQueues *operationQueues = [[CIOperationQueues alloc] initWithConcurrentFetchesCount:1 loadingsCount:1];
     CIImageLocating *imageLocating = [CIImageLocating new];
-    CMDataStoring *storing = [CMDataStoring new];
     CIImageCache *imageCache = [[CIImageCache alloc] initWithOperationQueues:operationQueues imageLocating:imageLocating];;
     CNDownloader *downloader = [CNDownloader new];
     
+    // интерактор
     CNMainInteractor *interactor = [CNMainInteractor new];
     interactor.dataStoring = storing;
     interactor.imageCache = imageCache;
     interactor.downloader = downloader;
     
+    // представление
     CVViewController *viewController = [[CVViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    // презентер
     CPMainPresenter *presenter = [CPMainPresenter new];
     presenter.interface = viewController;
     presenter.interactor = interactor;

@@ -20,10 +20,11 @@
 - (void)findItemsForPresenter {
     if (self.busyFindingItems)
         return;
-    
+    self.busyFindingItems = YES;
     WSELF;
     [self.dataStoring fetchUsersWithCompletion:^(NSArray *modelItems) {
         [wself handleModelItems:modelItems tryLoadIfEmpty:YES];
+        wself.busyFindingItems = NO;
     }];
 }
 

@@ -9,7 +9,28 @@
 #import "CMDataStoring.h"
 #import "CMUser.h"
 
+@interface CMDataStoring ()
+@property (strong, nonatomic) CDCoreDataManager *coreDataManager;
+@end
+
+#pragma mark -
+
 @implementation CMDataStoring
+
+- (instancetype)initWithCoreData:(CDCoreDataManager *)coreDataManager {
+    if (! coreDataManager)
+        return nil;
+    
+    self = [super init];
+    if (self) {
+        self.coreDataManager = coreDataManager;
+    }
+    return self;
+}
+
+- (instancetype)init {
+    @throw [NSException exceptionWithName:CUUTILS_ERROR reason:CUUTILS_MESSAGE_ABSTRACT_METHOD userInfo:nil];
+}
 
 - (void)fetchUsersWithCompletion:(ArrayBlock)block {
     if (! block)

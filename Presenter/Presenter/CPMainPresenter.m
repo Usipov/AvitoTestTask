@@ -31,6 +31,11 @@
     return self;
 }
 
+- (void)didAppear {
+    if (self.lastInteractorItems.count == 0)
+        [self didRequestViewUpdate];
+}
+
 - (void)didRequestViewUpdate {
     [self cancelImageRequests];
     

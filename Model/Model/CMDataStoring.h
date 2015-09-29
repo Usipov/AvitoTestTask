@@ -11,7 +11,9 @@
 
 @interface CMDataStoring : NSObject
 
-@property (strong, nonatomic) CDCoreDataManager *coreDataManager;
+- (instancetype)initWithCoreData:(CDCoreDataManager *)coreDataManager;
+
+@property (strong, nonatomic, readonly) CDCoreDataManager *coreDataManager;
 
 - (void)fetchUsersWithCompletion:(ArrayBlock)block;
 
