@@ -79,9 +79,12 @@
     NSUInteger index = [self indexOfInterfaceItem:item];
     if (index == NSNotFound)
         return;
-    
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationFade];
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    if ([self.tableView.indexPathsForVisibleRows containsObject:indexPath]) {
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 #pragma mark - private

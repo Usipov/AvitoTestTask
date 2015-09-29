@@ -48,6 +48,9 @@
     if (! block)
         return;
     
+    // добавляем еще одно свойство закрытым образом
+    [request setRootSavingImagePath:self.imageLocating.rootImageLocation];
+    
     id cachedImage = nil;
     
     @synchronized(self.imagesCache) { // mutex lock
@@ -56,10 +59,6 @@
     
     WSELF;
     if (! cachedImage) {
-        
-        // добавляем еще одно свойство закрытым образом
-        [request setRootSavingImagePath:self.imageLocating.rootImageLocation];
-        
         [self.operationQueues fetchOrLoadImageForRequest:request completion:^(id obj) {
             UIImage *image = [wself cacheObject:obj forRequest:request];
             block(image);
