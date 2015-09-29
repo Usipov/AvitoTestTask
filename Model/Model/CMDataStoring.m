@@ -83,9 +83,9 @@
             
             user.login = userData[@"login"];
             user.id = userData[@"id"];
-            user.avatarUrl = userData[@"avatar__url"];
+            user.avatarUrl = userData[@"avatar_url"];
             user.gravatarId = userData[@"gravatar_id"];
-            user.url = userData[@"_url"];
+            user.url = userData[@"url"];
             user.htmlUrl = userData[@"html_url"];
             user.followersUrl = userData[@"followers_url"];
             user.followingUrl = userData[@"following_url"];
@@ -94,7 +94,7 @@
             user.subscriptionsUrl = userData[@"subscriptions_url"];
             user.organizationsUrl = userData[@"organizations_url"];
             user.reposUrl = userData[@"repos_url"];
-            user.eventsUrl = userData[@"events__url"];
+            user.eventsUrl = userData[@"events_url"];
             user.receivedEventsUrl = userData[@"receivedEvents_url"];
             user.type = userData[@"type"];
             user.siteAdmin = userData[@"site_admin"];
