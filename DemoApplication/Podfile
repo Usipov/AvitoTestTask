@@ -1,0 +1,15 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '7.0'
+
+pod 'AvitoTestTask/Utils', :path => '..'
+pod 'AvitoTestTask/CoreData', :path => '..'
+pod 'AvitoTestTask/Model', :path => '..'
+pod 'AvitoTestTask/Networking', :path => '..'
+pod 'AvitoTestTask/Images', :path => '..'
+pod 'AvitoTestTask/Interactor', :path => '..'
+pod 'AvitoTestTask/View', :path => '..'
+pod 'AvitoTestTask/Presenter', :path => '..'
+
+pod 'MagicalRecord', '2.2', :inhibit_warnings => true
+pod 'Masonry', :inhibit_warnings => true
+	
