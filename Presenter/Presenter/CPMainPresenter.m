@@ -46,6 +46,7 @@
 - (void)didRequestTrashingThumbs {
     [self.interactor clearImages];
     [self.interactor stopFindingImages];
+    [self updateView];
 }
 
 - (void)didRequestTrashingStore {
@@ -85,11 +86,7 @@
 - (void)foundItemsForPresenter:(NSArray *)items {
     self.lastInteractorItems = items;
     self.lastInterfaceItems = [self interfaceItemsForInteractorItems:items];
-    if (self.lastInterfaceItems.count > 0) {
-        [self.interface showInterfaceItems:self.lastInterfaceItems];
-    } else {
-        [self.interface showIsEmptyMessage];
-    }
+    [self updateView];
 }
 
 - (void)foundNoItemsForPresenterDueToUnreachableInternet {
@@ -155,6 +152,14 @@
     NSParameterAssert(item);
     CNDataItem *interactorItem = [self exisingInteractorItemForInterfaceItem:item];
     [self.interactor findImageForPresenterMatchingDataItem:interactorItem];
+}
+
+- (void)updateView {
+    if (self.lastInterfaceItems.count > 0) {
+        [self.interface showInterfaceItems:self.lastInterfaceItems];
+    } else {
+        [self.interface showIsEmptyMessage];
+    }
 }
 
 #pragma mark -

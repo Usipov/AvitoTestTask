@@ -179,7 +179,7 @@
 
 - (void)onTrashThumbsTapped:(UIBarButtonItem *)sender {
     WSELF;
-    [self showConfirmationAlertWithMessage:@"Are you sure you want to delete images from disk?" action:^{
+    [self showConfirmationAlertWithMessage:@"Are you sure you want to delete images from disk and ram?" action:^{
         [wself.eventsHandler didRequestTrashingThumbs];
     }];
 }
