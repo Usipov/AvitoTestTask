@@ -44,7 +44,7 @@
 
 - (UIActivityIndicatorView *)activity {
     if (! _activity) {
-        _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [self addSubview:_activity];
         WSELF;
         [_activity mas_makeConstraints:^(MASConstraintMaker *make) {

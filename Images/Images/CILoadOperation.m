@@ -122,6 +122,9 @@
 }
 
 - (void)commitImage:(id)image {
+    if (self.cancelled)
+        return;
+    
     // сохраняю блок, чтобы он не обнулился в этом потоке за то время, пока управление будет переходить в главный поток
     IdBlock block = self.block;
     NSParameterAssert(block);

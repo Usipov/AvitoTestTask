@@ -34,24 +34,23 @@
 
 - (void)didRequestViewUpdate {
     [self cancelImageRequests];
-    
-    self.lastInteractorItems = nil;
-    self.lastInterfaceItems = nil;
-    
+    [self cleanUp];
+
     [self.interface setBeingUpdated];
-    [self.interactor clearImages];
+    [self.interactor stopFindingImages];
     [self.interactor findItemsForPresenter];
 }
 
 - (void)didRequestTrashingThumbs {
     [self.interactor clearImages];
     [self.interactor stopFindingImages];
-    [self updateView];
+    [self updateViewAnimated:NO];
 }
 
 - (void)didRequestTrashingStore {
     [self.interactor clearStorage];
-    [self didRequestViewUpdate];
+    [self cleanUp];
+    [self updateViewAnimated:YES];
 }
 
 - (void)willDisplayInterfaceItem:(CVInterfaceItem *)item {
@@ -86,7 +85,7 @@
 - (void)foundItemsForPresenter:(NSArray *)items {
     self.lastInteractorItems = items;
     self.lastInterfaceItems = [self interfaceItemsForInteractorItems:items];
-    [self updateView];
+    [self updateViewAnimated:YES];
 }
 
 - (void)foundNoItemsForPresenterDueToUnreachableInternet {
@@ -148,14 +147,19 @@
     [self.interactor stopFindingImages];
 }
 
+- (void)cleanUp {
+    self.lastInteractorItems = nil;
+    self.lastInterfaceItems = nil;
+}
+
 - (void)findImageForInterfaceItem:(CVInterfaceItem *)item {
     NSParameterAssert(item);
     CNDataItem *interactorItem = [self exisingInteractorItemForInterfaceItem:item];
     [self.interactor findImageForPresenterMatchingDataItem:interactorItem];
 }
 
-- (void)updateView {
-    [self.interface showInterfaceItems:self.lastInterfaceItems];
+- (void)updateViewAnimated:(BOOL)animated {
+    [self.interface showInterfaceItems:self.lastInterfaceItems animated:animated];
     
     if (self.lastInterfaceItems.count == 0) {
         [self.interface showIsEmptyMessage];

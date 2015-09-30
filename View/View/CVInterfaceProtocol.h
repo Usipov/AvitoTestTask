@@ -11,7 +11,7 @@
 
 @protocol CVInterfaceProtocol <NSObject>
 
-- (void)showInterfaceItems:(NSArray *)interfaceItems;
+- (void)showInterfaceItems:(NSArray *)interfaceItems animated:(BOOL)animated;
 
 - (void)setBeingUpdated;
 

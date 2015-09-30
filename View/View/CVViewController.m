@@ -18,6 +18,8 @@
 @property (strong, nonatomic) CVNoInternetConnectionView *noInternetView;
 @property (strong, nonatomic) NSArray *interfaceItems;
 @property (weak, nonatomic) UIView *topView;
+@property (strong, nonatomic) UIBarButtonItem *deleteStoreButtonItem;
+@property (strong, nonatomic) UIBarButtonItem *deleteThumbsButtonItem;
 @end
 
 @implementation CVViewController
@@ -32,18 +34,20 @@
                                                     target:self
                                                     action:@selector(onRefreshTapped:)];
     
-    UIBarButtonItem *deleteThumbsButtonItem
+    self.deleteThumbsButtonItem
     = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                     target:self
                                                     action:@selector(onTrashThumbsTapped:)];
+    self.deleteThumbsButtonItem.enabled = NO;
     
-    UIBarButtonItem *deleteStoreButtonItem
+    self.deleteStoreButtonItem
     = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                     target:self
                                                     action:@selector(onTrashStoreTapped:)];
-    deleteStoreButtonItem.tintColor = [UIColor redColor];
+    self.deleteStoreButtonItem.tintColor = [UIColor redColor];
+    self.deleteStoreButtonItem.enabled = NO;
     
-    self.navigationItem.leftBarButtonItems = @[deleteStoreButtonItem, deleteThumbsButtonItem];
+    self.navigationItem.leftBarButtonItems = @[self.deleteStoreButtonItem, self.deleteThumbsButtonItem];
     
     // скрываем лишние разделители клеток
     self.tableView.tableFooterView = [UIView new];
@@ -56,11 +60,17 @@
 
 #pragma mark - CVInterfaceProtocol
 
-- (void)showInterfaceItems:(NSArray *)interfaceItems {
+- (void)showInterfaceItems:(NSArray *)interfaceItems animated:(BOOL)animated {
     [self.topView removeFromSuperview];
     
     self.interfaceItems = interfaceItems;
-    [self.tableView reloadData];
+    if (animated) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView reloadData];
+    }
+    
+    self.deleteThumbsButtonItem.enabled = self.deleteStoreButtonItem.enabled = interfaceItems.count > 0;
 }
 
 - (void)setBeingUpdated {
@@ -115,7 +125,7 @@
     WSELF;
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.edges.equalTo(wself.view);
-        make.width.equalTo(@100);
+        make.width.equalTo(@200);
         make.height.equalTo(@50);
         make.centerX.equalTo(wself.view);
         make.centerY.equalTo(wself.view).offset(-50);

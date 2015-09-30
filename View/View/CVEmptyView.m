@@ -34,6 +34,7 @@
         _label = [[UILabel alloc] initWithFrame:self.bounds];
         _label.backgroundColor = [UIColor clearColor];
         _label.text = @"No data";
+        _label.textColor = [UIColor whiteColor];
         _label.textAlignment = NSTextAlignmentCenter;
         
         [self addSubview:_label];
