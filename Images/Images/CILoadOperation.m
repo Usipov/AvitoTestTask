@@ -110,6 +110,10 @@
     if (self.cancelled)
         return;
     
+    // создаем папку
+    NSString *folderPath = [imagePath stringByDeletingLastPathComponent];
+    [[NSFileManager new] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
+    
     // кэшируем на диск
     [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
     

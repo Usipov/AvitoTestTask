@@ -32,7 +32,7 @@
     CMDataStoring *storing = [[CMDataStoring alloc] initWithCoreData:coreData];
     
     // сервисы интерактора
-    CIOperationQueues *operationQueues = [[CIOperationQueues alloc] initWithConcurrentFetchesCount:1 loadingsCount:1];
+    CIOperationQueues *operationQueues = [[CIOperationQueues alloc] initWithConcurrentFetchesCount:1 loadingsCount:2];
     CIImageLocating *imageLocating = [CIImageLocating new];
     CIImageCache *imageCache = [[CIImageCache alloc] initWithOperationQueues:operationQueues imageLocating:imageLocating];;
     CNDownloader *downloader = [CNDownloader new];

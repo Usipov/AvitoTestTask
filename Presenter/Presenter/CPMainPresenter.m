@@ -11,25 +11,21 @@
 @interface CPMainPresenter ()
 @property (strong, nonatomic) NSArray *lastInteractorItems;
 @property (strong, nonatomic) NSArray *lastInterfaceItems;
-@property (strong, nonatomic) Reachability *reachability;
+@property (strong, nonatomic) NSMutableSet *visibleInterfaceItems;
+
 @end
 
 @implementation CPMainPresenter
 
-#pragma mark - CVInterfaceEventsProtocol
-
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.reachability = [Reachability reachabilityForInternetConnection];
-
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(onReachabilityChanged:)
-                                                     name:kReachabilityChangedNotification
-                                                   object:nil];
+        self.visibleInterfaceItems = [NSMutableSet new];
     }
     return self;
 }
+
+#pragma mark - CVInterfaceEventsProtocol
 
 - (void)didAppear {
     if (self.lastInteractorItems.count == 0)
@@ -41,11 +37,6 @@
     
     self.lastInteractorItems = nil;
     self.lastInterfaceItems = nil;
-    
-    if (! [self.reachability isReachable]) {
-        [self.interface showNoInternetConnectionMessage];
-        return;
-    }
     
     [self.interface setBeingUpdated];
     [self.interactor clearImages];
@@ -63,16 +54,30 @@
 }
 
 - (void)willDisplayInterfaceItem:(CVInterfaceItem *)item {
-    CNDataItem *interactorItem = [self exisingInteractorItemForInterfaceItem:item];
-    [self.interactor findImageForPresenterMatchingDataItem:interactorItem];
-}
-
-- (void)didDisplayInterfaceItem:(CVInterfaceItem *)item {
-    if (item.image)
+    if (! item)
         return;
     
+    [self.visibleInterfaceItems addObject:item];
+    [self findImageForInterfaceItem:item];
+}
+
+- (void)didFinishDisplayingInterfaceItem:(CVInterfaceItem *)item {
+    if (! item)
+        return;
+    
+    [self.visibleInterfaceItems removeObject:item];
+    
+    // очищаем память. пусть на картинку ссылается только кэш
+    item.image = nil;
+    
     CNDataItem *interactorItem = [self exisingInteractorItemForInterfaceItem:item];
-    [self.interactor stopFindingImageForPresenterMatchingDataItem:interactorItem];
+    if (interactorItem.image) {
+        // очищаем память
+        interactorItem.image = nil;
+    } else {
+        // заканчиваем подготовку картинки
+        [self.interactor stopFindingImageForPresenterMatchingDataItem:interactorItem];
+    }
 }
 
 #pragma mark - CNInteractorOutput
@@ -86,19 +91,28 @@
         [self.interface showIsEmptyMessage];
     }
 }
-     
+
+- (void)foundNoItemsForPresenterDueToUnreachableInternet {
+    [self.interface showNoInternetConnectionMessage];
+}
+
+- (void)internetBecameReachable {
+    // нужно заново загрузить все данные
+    if (self.lastInterfaceItems.count == 0) {
+        [self didRequestViewUpdate];
+        return;
+    }
+    
+    // данные есть, но картинок может не быть
+    for (CVInterfaceItem *visibleInterfaceItem in self.visibleInterfaceItems) {
+        [self findImageForInterfaceItem:visibleInterfaceItem];
+    }
+}
+
 - (void)foundImageForPresenterMatchingDataItem:(CNDataItem *)item {
     CVInterfaceItem *interfaceItem = [self exisingInterfaceItemForInteractorItem:item];
     interfaceItem.image = item.image;
     [self.interface updateViewForInterfaceItem:interfaceItem];
-}
-
-#pragma mark - notifications
-
-- (void)onReachabilityChanged:(NSNotification *)sender {
-    if (self.lastInterfaceItems.count == 0)
-        [self didRequestViewUpdate];
-    
 }
 
 #pragma mark - privates
@@ -137,7 +151,13 @@
     [self.interactor stopFindingImages];
 }
 
-#pragma mark - 
+- (void)findImageForInterfaceItem:(CVInterfaceItem *)item {
+    NSParameterAssert(item);
+    CNDataItem *interactorItem = [self exisingInteractorItemForInterfaceItem:item];
+    [self.interactor findImageForPresenterMatchingDataItem:interactorItem];
+}
+
+#pragma mark -
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

@@ -50,7 +50,7 @@
     NSString *md5 = [self.id.description md5Hash];
     NSString *result = [[[self.rootSavingImagePathPrivate stringByAppendingPathComponent:md5]
                          stringByAppendingPathComponent:self.id.description]
-                        stringByAppendingPathExtension:@".png"];
+                        stringByAppendingPathExtension:@"png"];
     self.pathToStoreImage = result;
     return result;
 }

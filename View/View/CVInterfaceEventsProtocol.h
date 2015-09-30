@@ -21,6 +21,6 @@
 
 - (void)willDisplayInterfaceItem:(CVInterfaceItem *)item;
 
-- (void)didDisplayInterfaceItem:(CVInterfaceItem *)item;
+- (void)didFinishDisplayingInterfaceItem:(CVInterfaceItem *)item;
 
 @end

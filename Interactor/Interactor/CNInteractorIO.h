@@ -22,5 +22,7 @@
 
 @protocol CNInteractorOutput <NSObject>
 - (void)foundItemsForPresenter:(NSArray *)items;
+- (void)foundNoItemsForPresenterDueToUnreachableInternet;
+- (void)internetBecameReachable;
 - (void)foundImageForPresenterMatchingDataItem:(CNDataItem *)item;
 @end

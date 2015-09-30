@@ -82,8 +82,11 @@
 
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     if ([self.tableView.indexPathsForVisibleRows containsObject:indexPath]) {
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
-                              withRowAnimation:UITableViewRowAnimationFade];
+        CVTableViewCell *cell = [(id)self.tableView cellForRowAtIndexPath:indexPath];
+        [self configureCell:cell withInterfaceItem:item];
+        
+        // чтобы imageView стал ненулевого размера, нужно подсказать клеточке, что что-то изменилось
+        [cell setNeedsLayout];
     }
 }
 
@@ -134,6 +137,12 @@
                                            }
                                        }];
     }];
+}
+
+
+- (void)configureCell:(CVTableViewCell *)cell withInterfaceItem:(CVInterfaceItem *)item {
+    cell.imageView.image = item.image;
+    cell.textLabel.text = item.login;
 }
 
 #pragma mark - lazy properties
@@ -197,19 +206,15 @@
     CVTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (! cell) {
         cell = [[CVTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
     if (cell.indexPath) {
         CVInterfaceItem *previousItem = [self interfaceItemAtIndex:cell.indexPath.row];
-        [self.eventsHandler didDisplayInterfaceItem:previousItem];
+        [self.eventsHandler didFinishDisplayingInterfaceItem:previousItem];
     }
     
     cell.indexPath = indexPath;
-    
-    CVInterfaceItem *item = [self interfaceItemAtIndex:indexPath.row];
-    cell.imageView.image = item.image;
-    cell.textLabel.text = item.login;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
 }
@@ -217,6 +222,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     CVInterfaceItem *item = [self interfaceItemAtIndex:indexPath.row];
     [self.eventsHandler willDisplayInterfaceItem:item];
+    [self configureCell:(id)cell withInterfaceItem:item];
 }
 
 @end

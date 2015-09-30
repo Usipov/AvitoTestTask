@@ -11,11 +11,28 @@
 
 @interface CNMainInteractor ()
 @property (assign, nonatomic) BOOL busyFindingItems;
+@property (strong, nonatomic) Reachability *reachability;
 @end
 
 #pragma mark -
 
 @implementation CNMainInteractor
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.reachability = [Reachability reachabilityForInternetConnection];
+        [self.reachability startNotifier];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onReachabilityChanged:)
+                                                     name:kReachabilityChangedNotification
+                                                   object:nil];
+    }
+    return self;
+}
+
+#pragma mark - CNInteractorInput
 
 - (void)findItemsForPresenter {
     if (self.busyFindingItems)
@@ -34,6 +51,12 @@
     
     WSELF;
     if (modelItems.count == 0 && tryLoad) {
+        
+        if (! [self.reachability isReachable]) {
+            [self.outputReciever foundNoItemsForPresenterDueToUnreachableInternet];
+            return;
+        }
+        
         // качаем
         [wself.downloader downloadArrayFromURL:@"https://api.github.com/users"
                                     completion:^(NSArray *downloadedItems) {
@@ -88,9 +111,15 @@
     if (item.image)
         return;
     
-    WSELF;
-    CIImageRequest *request = [self imageRequestForDataItem:item];
+    if (! [self.reachability isReachable]) {
+        [self.outputReciever foundImageForPresenterMatchingDataItem:item];
+        return;
+    }
     
+    // готовим объект запроса на картику для сервиса
+    CIImageRequest *request = [self imageRequestForDataItem:item];
+
+    WSELF;
     [self.imageCache imageForRequest:request completion:^(id obj) {
         item.image = obj;
         [wself.outputReciever foundImageForPresenterMatchingDataItem:item];
@@ -123,6 +152,13 @@
 - (CIImageRequest *)imageRequestForDataItem:(CNDataItem *)dataItem {
     CIImageRequest *request = [[CIImageRequest alloc] initWithId:dataItem.id url:dataItem.avatarUrl];
     return request;
+}
+
+#pragma mark - notifications
+
+- (void)onReachabilityChanged:(NSNotification *)sender {
+    if (self.reachability.isReachable)
+        [self.outputReciever internetBecameReachable];
 }
 
 @end

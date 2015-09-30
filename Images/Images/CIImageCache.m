@@ -48,7 +48,9 @@
     if (! block)
         return;
     
-    // добавляем еще одно свойство закрытым образом
+    // добавляем еще одно свойство закрытым образом,
+    // чтобы с запроса можно было узнать откуда вычитывать картинку
+    // и куда ее записывать
     [request setRootSavingImagePath:self.imageLocating.rootImageLocation];
     
     id cachedImage = nil;
