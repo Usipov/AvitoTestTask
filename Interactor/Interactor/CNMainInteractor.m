@@ -47,7 +47,7 @@
 
 - (void)handleModelItems:(NSArray *)modelItems tryLoadIfEmpty:(BOOL)tryLoad {
     NSArray *interactorItems = [self interactorItemsForModelItems:modelItems];
-    [self.outputReciever foundItemsForPresenter:interactorItems];
+    [self.outputReciever foundItemsForPresenter:interactorItems ? : @[]];
     
     WSELF;
     if (modelItems.count == 0 && tryLoad) {

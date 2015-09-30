@@ -14,6 +14,16 @@
 
 @implementation CVLoadingView
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.autoresizesSubviews = NO;
+        self.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+        self.layer.cornerRadius = 10;
+    }
+    return self;
+}
+
 - (void)didMoveToSuperview {
     [super didMoveToSuperview];
     
@@ -38,7 +48,8 @@
         [self addSubview:_activity];
         WSELF;
         [_activity mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(wself);
+            //make.center.equalTo(wself);
+            make.edges.equalTo(wself);
         }];
     }
     return _activity;

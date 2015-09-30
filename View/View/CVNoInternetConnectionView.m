@@ -14,6 +14,16 @@
 
 @implementation CVNoInternetConnectionView
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.autoresizesSubviews = NO;
+        self.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+        self.layer.cornerRadius = 10;
+    }
+    return self;
+}
+
 - (void)didMoveToSuperview {
     [super didMoveToSuperview];
     [self label];
@@ -22,7 +32,10 @@
 - (UILabel *)label {
     if (! _label) {
         _label = [[UILabel alloc] initWithFrame:self.bounds];
+        _label.backgroundColor = [UIColor clearColor];
         _label.text = @"No internet connection";
+        _label.textAlignment = NSTextAlignmentCenter;
+
         [self addSubview:_label];
         WSELF;
         [_label mas_makeConstraints:^(MASConstraintMaker *make) {

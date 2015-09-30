@@ -155,9 +155,9 @@
 }
 
 - (void)updateView {
-    if (self.lastInterfaceItems.count > 0) {
-        [self.interface showInterfaceItems:self.lastInterfaceItems];
-    } else {
+    [self.interface showInterfaceItems:self.lastInterfaceItems];
+    
+    if (self.lastInterfaceItems.count == 0) {
         [self.interface showIsEmptyMessage];
     }
 }

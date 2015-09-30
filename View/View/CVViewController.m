@@ -57,7 +57,7 @@
 #pragma mark - CVInterfaceProtocol
 
 - (void)showInterfaceItems:(NSArray *)interfaceItems {
-    [self.emptyView removeFromSuperview];
+    [self.topView removeFromSuperview];
     
     self.interfaceItems = interfaceItems;
     [self.tableView reloadData];
@@ -110,14 +110,17 @@
     [self.topView removeFromSuperview];
     self.topView = view;
     
+    view.frame = self.view.frame;
     [self.view addSubview:view];
     WSELF;
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(wself.view);
+//        make.edges.equalTo(wself.view);
+        make.width.equalTo(@100);
+        make.height.equalTo(@50);
+        make.centerX.equalTo(wself.view);
+        make.centerY.equalTo(wself.view).offset(-50);
     }];
-    
-    [self.view layoutIfNeeded];
-    [self.topView layoutIfNeeded];
+//    self.tableView.alpha = 0.0;
 }
 
 - (void)showConfirmationAlertWithMessage:(NSString *)message action:(BasicBlock)action {
