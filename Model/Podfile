@@ -3,3 +3,5 @@ platform :ios, '7.0'
 
 pod 'AvitoTestTask/Utils', :path => '..'
 pod 'AvitoTestTask/CoreData', :path => '..'
+
+pod 'MagicalRecord', '2.2', :inhibit_warnings => true

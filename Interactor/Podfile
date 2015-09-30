@@ -6,3 +6,5 @@ pod 'AvitoTestTask/Networking', :path => '..'
 pod 'AvitoTestTask/Images', :path => '..'
 pod 'AvitoTestTask/CoreData', :path => '..'
 pod 'AvitoTestTask/Model', :path => '..'
+
+pod 'MagicalRecord', '2.2', :inhibit_warnings => true

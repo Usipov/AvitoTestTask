@@ -32,7 +32,7 @@
       "name": "CoreData",
       "source_files": "CoreData/CoreData/**/*.{h,m,mm}",
       "prefix_header_file": "CoreData/CoreData/CoreData-Prefix.pch",
-      "resources": "CoreData/CoreData/**/*.{bundle,plist}",
+      "resources": "CoreData/CoreData/**/*.{bundle,plist,xcdatamodeld}",
       "dependencies": {
         "AvitoTestTask/Utils": [
 

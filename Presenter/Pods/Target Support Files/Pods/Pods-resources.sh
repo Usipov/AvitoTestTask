@@ -58,10 +58,10 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "../../View/View/Info.plist"
+  install_resource "../../CoreData/CoreData/CoreData.xcdatamodeld"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "../../View/View/Info.plist"
+  install_resource "../../CoreData/CoreData/CoreData.xcdatamodeld"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
