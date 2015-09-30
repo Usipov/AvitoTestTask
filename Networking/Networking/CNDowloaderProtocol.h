@@ -14,4 +14,6 @@
 
 - (NSOperation *)downloadArrayFromURL:(NSString *)url completion:(ArrayBlock)block error:(ErrorBlock)errorBlock;
 
+- (NSOperation *)downloadImageFromURL:(NSString *)url completion:(IdBlock)block error:(ErrorBlock)errorBlock;
+
 @end

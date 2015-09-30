@@ -38,16 +38,17 @@
     @throw [NSException exceptionWithName:CUUTILS_ERROR reason:CUUTILS_MESSAGE_ABSTRACT_METHOD userInfo:nil];
 }
 
-- (NSString *)deriveImagePathForRootPath:(NSString *)rootPath {
-    if (! self.pathToStoreImage)
+- (NSString *)deriveImagePathForRootPath {
+    if (self.pathToStoreImage)
+        return self.pathToStoreImage;
+
+    if (! self.rootSavingImagePathPrivate)
         return nil;
     if (! self.id)
         return nil;
-    if (self.pathToStoreImage)
-        return self.pathToStoreImage;
     
     NSString *md5 = [self.id.description md5Hash];
-    NSString *result = [[[rootPath stringByAppendingPathComponent:md5]
+    NSString *result = [[[self.rootSavingImagePathPrivate stringByAppendingPathComponent:md5]
                          stringByAppendingPathComponent:self.id.description]
                         stringByAppendingPathExtension:@".png"];
     self.pathToStoreImage = result;
@@ -58,7 +59,7 @@
 
 - (void)setRootSavingImagePathPrivate:(NSString *)rootSavingImagePathPrivate {
     _rootSavingImagePathPrivate = rootSavingImagePathPrivate;
-    self.pathToStoreImage = [self deriveImagePathForRootPath:self.rootSavingImagePathPrivate];
+    self.pathToStoreImage = [self deriveImagePathForRootPath];
 }
 
 #pragma mark -

@@ -12,7 +12,12 @@
 @interface CILoadOperation ()
 @property (strong, nonatomic) CIImageRequest *request;
 @property (copy, nonatomic) IdBlock block;
-@property (strong, atomic) NSOperation *loadOperation;
+@property (strong, nonatomic) NSOperation *loadOperation;
+@property (strong, nonatomic) NSPort *port;
+@property (strong, nonatomic) NSRunLoop *runLoop;
+@property (strong, nonatomic) NSThread *thread;
+@property (assign, nonatomic) BOOL isCompleted;
+@property (assign, nonatomic) BOOL needsStop;
 @end
 
 #pragma mark -
@@ -36,45 +41,94 @@
     if (self.cancelled)
         return;
     
+    self.runLoop = [NSRunLoop currentRunLoop];
+    self.port = [NSMachPort port];
+    self.thread = [NSThread currentThread];
+    [self.runLoop addPort: self.port forMode: NSDefaultRunLoopMode];
+    
     WSELF;
-    @autoreleasepool {
-        self.loadOperation = [[CNDownloader new] dowloadDataFromURL:self.request.url
-                                                         completion:^(NSData *data) {
-                                                             [wself processImageData:data];
-                                                         } error:NULL];
+    self.loadOperation = [[CNDownloader new] downloadImageFromURL:self.request.url
+                                                       completion:^(id image) {
+                                                           [wself processImage:image];
+                                                       } error:^(NSError *error) {
+                                                           DLog(@"%@", error);
+                                                           [wself commitImage:nil];
+                                                       }];
+
+    // будем прокручивать ран луп, чтобы не дать выйти из функции main и не быть деаллоцированными
+    NSTimeInterval stepLength = 0.1;
+    NSDate *future = [NSDate dateWithTimeIntervalSinceNow:stepLength];
+    while (! self.needsStop && [self.runLoop runMode:NSDefaultRunLoopMode beforeDate:future]) {
+        future = [future dateByAddingTimeInterval:stepLength];
+    }
+    
+    self.isCompleted = YES;
+    [self internalComplete];
+}
+
+- (void)cancel {
+    [super cancel];
+    [self setNeedsStopOnPrivateThread];
+}
+
+#pragma mark - privates
+
+- (void)setNeedsStopOnPrivateThread {
+    // если есть текущий поток, значит метод main уже вызывали. если потока нет, значит отмену операции вызвали из главного потока до того, как сработал main
+    if (! self.thread || [NSThread currentThread] == self.thread) {
+        [self internalComplete];
+    } else {
+        [self performSelector:@selector(internalComplete) onThread:self.thread withObject:nil waitUntilDone:NO];
     }
 }
 
--(void)processImageData:(NSData *)data {
-    if (! data)
-        return;
+- (void)internalComplete {
+    [self cleanUp];
+    self.needsStop = YES;
+}
+
+- (void)cleanUp {
+    self.block = nil;
     
-    if (self.cancelled)
+    [self.loadOperation cancel];
+    self.loadOperation = nil;
+    
+    [self.runLoop removePort: self.port forMode: NSDefaultRunLoopMode];
+    self.port = nil;
+}
+
+- (void)processImage:(id)imageObject {
+    if (! [imageObject isKindOfClass:[UIImage self]]) {
+        [self commitImage:nil];
         return;
+    }
     
     // можно еще добавить удаление устаревших картинок, но не в этот раз
-    UIImage *image = [UIImage imageWithData:data];
-    if (! [image isKindOfClass:[UIImage self]])
-        return;
+    UIImage *image = imageObject;
     
     NSString *imagePath = [self.request pathToStoreImage];
     if (self.cancelled)
         return;
     
-    [data writeToFile:imagePath atomically:YES];
+    // кэшируем на диск
+    [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
     
-    doOnMain(^{
-        if (! self.cancelled) {
-            self.block(image);
-        }
-    });
+    // отправляем в UI
+    [self commitImage:image];
 }
 
-- (void)cancel {
-    [super cancel];
+- (void)commitImage:(id)image {
+    // сохраняю блок, чтобы он не обнулился в этом потоке за то время, пока управление будет переходить в главный поток
+    IdBlock block = self.block;
+    NSParameterAssert(block);
     
-    [self.loadOperation cancel];
-    self.loadOperation = nil;
+    WSELF;
+    doOnMain(^{
+        if (! wself.cancelled) {
+            block(image);
+        }
+    });
+    [self setNeedsStopOnPrivateThread];
 }
 
 @end
